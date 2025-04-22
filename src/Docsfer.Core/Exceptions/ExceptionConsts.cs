@@ -7,4 +7,7 @@ public static class ExceptionConsts
     public const string AccountLockedOut = "account locked, try again later";
     public const string EmailAlreadyRegistered = "email already exists";
     public const string CouldNotRegisterUser = "could not register user";
+
+    public const string DownloadFilenameInvalid = "filename invalid";
+    public const string InvalidFile = "invalid file";
 }

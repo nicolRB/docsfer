@@ -60,6 +60,9 @@ services:
       - docsfer_network
     environment:
       - ConnectionStrings__Default=Host=postgres; Database=docsfer; Username=postgres; Password=postgres;
+    depends_on:
+      postgres:
+        condition: service_healthy
 
 
 
