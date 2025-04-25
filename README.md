@@ -9,6 +9,9 @@ Architecture:
 - PostgreSQL: Database.
 - Azurite (Azure Blob Storage): File hosting.
 
+External Modules:
+- SMTP: SendGrid
+
 Requisitos funcionais:
 - RF001: O sistema deve permitir a autenticação do usuário por Microsoft Entra ID.
 - RF002: O sistema deve permitir a troca de arquivos entre usuários singulares. e.g.: José e Carlos.
