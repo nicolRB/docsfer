@@ -1,12 +1,11 @@
-using System.Text;
 using Docsfer.Api.Middlewares;
 using Docsfer.Core.Identity;
 using Docsfer.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration["ConnectionStrings:Default"];
 
 // Authentication Providers
-var jwtAuthorization = builder.Configuration["Authentication:Jwt:Authority"];
+var jwtAuthority = builder.Configuration["Authentication:Jwt:Authority"];
 var jwtAudience = builder.Configuration["Authentication:Jwt:Audience"];
 var jwtIssuer = builder.Configuration["Authentication:Jwt:Issuer"];
 var jwtKey = builder.Configuration["Authentication:Jwt:Key"];
@@ -35,6 +34,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
         options.SlidingExpiration = true;
+    })
+    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+    {
+        options.Authority = jwtAuthority;
+        options.Audience = jwtAudience;
     });
 
 if (!string.IsNullOrWhiteSpace(microsoftClientId) && !string.IsNullOrWhiteSpace(microsoftClientSecret))
@@ -44,20 +48,29 @@ if (!string.IsNullOrWhiteSpace(microsoftClientId) && !string.IsNullOrWhiteSpace(
         {
             options.ClientId = microsoftClientId;
             options.ClientSecret = microsoftClientSecret;
+
+            options.SignInScheme = IdentityConstants.ExternalScheme;
         });
 }
 
 if (!string.IsNullOrWhiteSpace(googleClientId) && !string.IsNullOrWhiteSpace(googleClientSecret))
 {
     builder.Services.AddAuthentication()
-        .AddGoogleOpenIdConnect(options =>
+        .AddGoogle(options =>
         {
             options.ClientId = googleClientId;
             options.ClientSecret = googleClientSecret;
+
+            options.SignInScheme = IdentityConstants.ExternalScheme;
         });
 }
 
-builder.Services.AddAuthorization();
+var requireAuthPolicy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
+
+builder.Services.AddAuthorizationBuilder()
+    .SetDefaultPolicy(requireAuthPolicy);
 
 builder.Services.Configure<IdentityOptions>(options =>
 {

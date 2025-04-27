@@ -53,6 +53,12 @@ public class AuthenticationController(
         return Ok();
     }
 
+    [HttpPost("oauth")]
+    public async Task<IActionResult> Oauth()
+    {
+        return Ok();
+    }
+
     private async Task<IdentityResult> RegisterInternalAsync(RegisterInput input)
     {
         var user = new User
