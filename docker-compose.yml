@@ -73,7 +73,10 @@ services:
       context: .
       dockerfile: ./src/Docsfer.Api/Dockerfile
     environment:
+      - ApplicationRoot=http://localhost
       - ConnectionStrings__Default=Host=postgres; Database=docsfer; Username=postgres; Password=postgres;
+    env_file:
+      - .env
     networks:
       - docsfer_network
     depends_on:

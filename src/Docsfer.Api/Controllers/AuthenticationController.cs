@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using Azure.Storage.Blobs.Models;
 using Docsfer.Core.Exceptions.Identity;
 using Docsfer.Core.Identity;
 using Docsfer.Core.Shared.Identity;
@@ -10,7 +12,8 @@ namespace Docsfer.Api.Controllers;
 [Route("api/v1/auth")]
 public class AuthenticationController(
     SignInManager<User> signInManager,
-    UserManager<User> userManager) : ControllerBase
+    UserManager<User> userManager,
+    IConfiguration configuration) : ControllerBase
 {
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterInput input)
@@ -53,10 +56,28 @@ public class AuthenticationController(
         return Ok();
     }
 
-    [HttpPost("oauth")]
-    public async Task<IActionResult> Oauth()
+    [HttpGet("oauth/{provider}")]
+    public IActionResult Oauth(string provider)
     {
-        return Ok();
+        var redirectUrl = GetRedirectUrl("home");
+        var properties = signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+
+        return Challenge(properties, provider);
+    }
+
+    [HttpGet("oauth/{provider}/callback")]
+    public async Task<IActionResult> OauthCallback(string provider)
+    {
+        var info = await signInManager.GetExternalLoginInfoAsync() ?? throw new PasswordInvalidException();
+
+        var result = await signInManager.ExternalLoginSignInAsync(provider, info.ProviderKey, true, true);
+
+        if (result.Succeeded)
+        {
+            return Redirect(GetRedirectUrl("home"));
+        }
+
+        return Redirect(GetRedirectUrl("login"));
     }
 
     private async Task<IdentityResult> RegisterInternalAsync(RegisterInput input)
@@ -70,5 +91,13 @@ public class AuthenticationController(
         };
 
         return await userManager.CreateAsync(user, input.Password);
+    }
+
+    private string GetRedirectUrl(string suffix)
+    {
+        var appRoot = configuration["ApplicationRoot"];
+        var redirectUrl = $"{appRoot}/{suffix}";
+
+        return redirectUrl;
     }
 }

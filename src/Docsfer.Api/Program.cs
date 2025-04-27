@@ -4,6 +4,7 @@ using Docsfer.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,9 @@ var jwtAuthority = builder.Configuration["Authentication:Jwt:Authority"];
 var jwtAudience = builder.Configuration["Authentication:Jwt:Audience"];
 var jwtIssuer = builder.Configuration["Authentication:Jwt:Issuer"];
 var jwtKey = builder.Configuration["Authentication:Jwt:Key"];
+
+var githubClientId = builder.Configuration["Authentication:GitHub:ClientId"];
+var githubClientSecret = builder.Configuration["Authentication:GitHub:ClientSecret"];
 
 var googleClientId = builder.Configuration["Authentication:Google:ClientId"];
 var googleClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
@@ -41,11 +45,31 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.Audience = jwtAudience;
     });
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.SameSite = SameSiteMode.None;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+});
+
+if (!string.IsNullOrWhiteSpace(githubClientId) && !string.IsNullOrWhiteSpace(githubClientSecret))
+{
+    builder.Services.AddAuthentication()
+        .AddGitHub(options =>
+        {
+            options.CallbackPath = "/api/v1/auth/oauth/GitHub/callback";
+            options.ClientId = githubClientId;
+            options.ClientSecret = githubClientSecret;
+
+            options.SignInScheme = IdentityConstants.ExternalScheme;
+        });
+}
+
 if (!string.IsNullOrWhiteSpace(microsoftClientId) && !string.IsNullOrWhiteSpace(microsoftClientSecret))
 {
     builder.Services.AddAuthentication()
         .AddMicrosoftAccount(options =>
         {
+            options.CallbackPath = "/api/v1/auth/oauth/Microsoft/callback";
             options.ClientId = microsoftClientId;
             options.ClientSecret = microsoftClientSecret;
 
@@ -58,6 +82,7 @@ if (!string.IsNullOrWhiteSpace(googleClientId) && !string.IsNullOrWhiteSpace(goo
     builder.Services.AddAuthentication()
         .AddGoogle(options =>
         {
+            options.CallbackPath = "/api/v1/auth/oauth/Google/callback";
             options.ClientId = googleClientId;
             options.ClientSecret = googleClientSecret;
 
@@ -98,6 +123,11 @@ app.MapOpenApi("/api/docs/{documentName}.json");
 
 app.MapControllers();
 
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedFor,
+    RequireHeaderSymmetry = false,
+});
 app.UseAuthentication();
 app.UseAuthorization();
 
