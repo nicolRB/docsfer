@@ -1,7 +1,7 @@
-using System.Security.Claims;
+using System.Net.Mail;
 using Azure.Storage.Blobs;
+using Docsfer.Api.Managers;
 using Docsfer.Core.Exceptions.Blobs;
-using Docsfer.Core.Exceptions.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,10 +35,12 @@ public class BlobController : ControllerBase
             throw new InvalidFileException();
         }
 
-        var blobName = "TODO: FILENAME";
+        using var stream = file.OpenReadStream();
+        var uuid = Guid.NewGuid().ToString();
+
+        var blobName = $"{from}/{uuid}.file";
         var blobClient = _blobContainerClient.GetBlobClient(blobName);
 
-        using var stream = file.OpenReadStream();
         await blobClient.UploadAsync(stream);
 
         // TODO: send email

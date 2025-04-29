@@ -7,7 +7,8 @@ Architecture:
 - Migrator: Database migrations
 - Nginx: Reverse proxy.
 - PostgreSQL: Database.
-- Azurite (Azure Blob Storage): File hosting.
+- Azurite (Azure Blob Storage) (dev): File hosting.
+- Smtp4dev (dev): SMTP test server.
 
 External Modules:
 - SMTP: SendGrid
