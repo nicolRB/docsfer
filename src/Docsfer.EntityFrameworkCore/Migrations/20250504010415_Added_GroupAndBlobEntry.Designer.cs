@@ -3,6 +3,7 @@ using System;
 using Docsfer.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Docsfer.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(DocsferDbContext))]
-    partial class DocsferDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250504010415_Added_GroupAndBlobEntry")]
+    partial class Added_GroupAndBlobEntry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

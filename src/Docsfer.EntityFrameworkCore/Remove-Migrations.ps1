@@ -1,0 +1,1 @@
+dotnet ef migrations remove -c DocsferDbContext --project ./Docsfer.EntityFrameworkCore.csproj --startup-project ../Docsfer.Api/Docsfer.Api.csproj

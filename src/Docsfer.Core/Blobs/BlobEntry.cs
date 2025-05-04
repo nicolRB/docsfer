@@ -1,14 +1,16 @@
+using Docsfer.Core.Relationships;
+
 namespace Docsfer.Core.Blobs;
 
 public class BlobEntry
 {
     public long? Id { get; set; } = null;
 
-    public Guid From { get; set; } = Guid.Empty;
+    public Relationship? Relationship { get; set; }
 
-    public Guid To { get; set; } = Guid.Empty;
+    public string BlobName { get; set; } = Guid.NewGuid().ToString();
 
-    public string BlobName { get; set; } = string.Empty;
+    public string FileName { get; set; } = string.Empty;
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 }

@@ -1,7 +1,8 @@
-using System.Net.Mail;
 using Azure.Storage.Blobs;
-using Docsfer.Api.Managers;
+using Docsfer.Api.Repositories;
+using Docsfer.Core.Blobs;
 using Docsfer.Core.Exceptions.Blobs;
+using Docsfer.Core.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,8 +14,13 @@ namespace Docsfer.Api.Controllers;
 public class BlobController : ControllerBase
 {
     private readonly BlobContainerClient _blobContainerClient;
+    private readonly IRelationshipRepository _relationshipRepository;
+    private readonly IBlobEntryRepository _blobEntryRepository;
 
-    public BlobController(IConfiguration configuration)
+    public BlobController(
+        IConfiguration configuration,
+        IRelationshipRepository relationshipRepository,
+        IBlobEntryRepository blobEntryRepository)
     {
         var connectionString = configuration["AzureBlobStorage:ConnectionString"];
         var containerName = configuration["AzureBlobStorage:ContainerName"];
@@ -22,13 +28,16 @@ public class BlobController : ControllerBase
         var blobServiceClient = new BlobServiceClient(connectionString);
         _blobContainerClient = blobServiceClient.GetBlobContainerClient(containerName);
         _blobContainerClient.CreateIfNotExists();
+
+        _relationshipRepository = relationshipRepository;
+        _blobEntryRepository = blobEntryRepository;
     }
 
     [HttpPost("upload")]
     public async Task<IActionResult> Upload(
         [FromForm] IFormFile file,
-        [FromForm] string from,
-        [FromForm] string to)
+        [FromForm] Guid from,
+        [FromForm] Guid to)
     {
         if (file == null || file.Length == 0)
         {
@@ -36,16 +45,24 @@ public class BlobController : ControllerBase
         }
 
         using var stream = file.OpenReadStream();
-        var uuid = Guid.NewGuid().ToString();
 
-        var blobName = $"{from}/{uuid}.file";
+        var relationship = (await _relationshipRepository.Get(from, to)).EnsureExists();
+
+        var blobEntry = new BlobEntry
+        {
+            FileName = file.FileName,
+            Relationship = relationship,
+        };
+
+        var blobName = $"{relationship.Id}/{blobEntry.BlobName}.file";
         var blobClient = _blobContainerClient.GetBlobClient(blobName);
 
         await blobClient.UploadAsync(stream);
 
-        // TODO: send email
-
-        return Created();
+        return Ok(new
+        {
+            blobName,
+        });
     }
 
     [HttpPost("download")]
