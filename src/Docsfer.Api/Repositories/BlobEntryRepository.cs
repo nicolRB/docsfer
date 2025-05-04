@@ -14,4 +14,10 @@ public class BlobEntryRepository(DocsferDbContext context) : IBlobEntryRepositor
             .Where(b => b.Relationship == relationship)
             .ToListAsync();
     }
+
+    public async Task InsertAsync(BlobEntry blobEntry)
+    {
+        await context.BlobEntries.AddAsync(blobEntry);
+        await context.SaveChangesAsync();
+    }
 }

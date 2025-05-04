@@ -46,13 +46,15 @@ public class BlobController : ControllerBase
 
         using var stream = file.OpenReadStream();
 
-        var relationship = (await _relationshipRepository.Get(from, to)).EnsureExists();
+        var relationship = (await _relationshipRepository.FindAsync(from, to)).EnsureExists();
 
         var blobEntry = new BlobEntry
         {
             FileName = file.FileName,
             Relationship = relationship,
         };
+
+        await _blobEntryRepository.InsertAsync(blobEntry);
 
         var blobName = $"{relationship.Id}/{blobEntry.BlobName}.file";
         var blobClient = _blobContainerClient.GetBlobClient(blobName);
