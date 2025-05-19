@@ -1,0 +1,21 @@
+%%{ init: { "theme": "default", "flowchart": { "curve": "linear" } } }%%
+C4Container
+title Sistema Docsfer - Diagrama de Container
+
+Person(user, "Usuário Final", "Pessoa que utiliza o sistema<br/>para trocar arquivos.")
+
+System_Boundary(docsfer_system, "Docsfer") {
+    Container(nginx, "NGINX", "Proxy reverso", "Encaminha requisições para<br/>o app ASP.NET Core")
+    Container(app, "Docsfer App", "ASP.NET Core", "Aplicação web monolítica<br/>responsável pela lógica de<br/>negócio e APIs")
+    ContainerDb(db, "PostgreSQL", "Banco de Dados Relacional", "Armazena dados")
+    Container(migrator, "Migrador", "CLI", "Aplica migrações no banco de<br/>dados ao subir o ambiente")
+    Container(blob, "Azurite", "Simulador Azure Blob", "Simula armazenamento<br/>de arquivos em blob")
+    Container(smtp, "SMTP4Dev", "Servidor SMTP Fake", "Captura e-mails de teste<br/>enviados pelo sistema")
+}
+
+Rel(user, nginx, "Acessa via HTTP/HTTPS")
+Rel(nginx, app, "Encaminha")
+Rel(app, db, "Lê/grava dados", "PG Protocol")
+Rel(app, blob, "Envia/recebe arquivos", "Azure Blob API")
+Rel(app, smtp, "Envia e-mails", "SMTP")
+Rel(migrator, db, "Executa migrações", "PG Protocol")
