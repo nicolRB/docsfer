@@ -1,0 +1,1095 @@
+{
+  "tables": [
+    {
+      "id": "3YeS9qJDCphIX-d7cmE6i",
+      "name": "Role",
+      "x": -291.00423607626794,
+      "y": -77.52303329264726,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "NkBes6ftPpdCd9BEhcbIO"
+        },
+        {
+          "id": "-WCMJMwM3oRqSaY951WGf",
+          "name": "Name",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "m0ukx2GLFDmjccrCNrT09",
+          "name": "NormalizedName",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 256
+        },
+        {
+          "id": "e3mRpDJuxP4oDELUh8ztO",
+          "name": "ConcurrencyStamp",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "RoleNameIndex",
+          "unique": true,
+          "fields": [
+            "NormalizedName"
+          ]
+        }
+      ],
+      "color": "#175e7a"
+    },
+    {
+      "id": "SphZfZ_qOOQJ2AM4NnPQ_",
+      "name": "User",
+      "x": 341.16416939966786,
+      "y": -81.51072014598046,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "TY1eX8xqoUpjYOm6XmH0V",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "N7_Dc_pKS7UDr6TAEYaXs",
+          "name": "UserName",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 256
+        },
+        {
+          "id": "k-uU4rQQIEPdVFISn7ijq",
+          "name": "NormalizedUserName",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 256
+        },
+        {
+          "id": "oeSPTZ3tkABAPciki2iW5",
+          "name": "Email",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 256
+        },
+        {
+          "id": "uD7bQGmrsbK2irFlKal6P",
+          "name": "NormalizedEmail",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 256
+        },
+        {
+          "id": "d_pn1347UnALb-a0-KfSa",
+          "name": "EmailConfirmed",
+          "type": "BOOLEAN",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "khduXoWSmrj-QCNgBBGl8",
+          "name": "PasswordHash",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "I5jtc-OcqNfTfkgM7saz2",
+          "name": "SecurityStamp",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ZRRsnF9bAO7XvaWa1FRtq",
+          "name": "ConcurrencyStamp",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "hjnVRTrf5pan39n_CMZAZ",
+          "name": "PhoneNumber",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "7UBEFJqD-pJjQRJ-Wj6MC",
+          "name": "PhoneNumberConfirmed",
+          "type": "BOOLEAN",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "kgPrTxQNkWXv5klzgEUeq",
+          "name": "TwoFactorEnabled",
+          "type": "BOOLEAN",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "h1U6h2uQta9J3fHjYlTv0",
+          "name": "LockoutEnd",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "nxuL55xbC8fGxGkTr-iN1",
+          "name": "LockoutEnabled",
+          "type": "BOOLEAN",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "8osBaxVGikavD51_XUvKY",
+          "name": "AccessFailedCount",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "EmailIndex",
+          "unique": false,
+          "fields": [
+            "NormalizedEmail"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "UserNameIndex",
+          "unique": true,
+          "fields": [
+            "NormalizedUserName"
+          ]
+        }
+      ],
+      "color": "#175e7a"
+    },
+    {
+      "id": "q7izroH-jNKPfBr1OpcAk",
+      "name": "RoleClaim",
+      "x": -303.6448628481222,
+      "y": 284.2193545973487,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "Pik1QiphVydyCAX6sZ66V"
+        },
+        {
+          "id": "u1w7Qy6Glzy33ejCWFXhW",
+          "name": "RoleId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "LHyi16xV0tuSquXHoTp9Z",
+          "name": "ClaimType",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "qYx54v-ndjo9hX6gXXBNl",
+          "name": "ClaimValue",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "IX_RoleClaim_RoleId",
+          "unique": false,
+          "fields": [
+            "RoleId"
+          ]
+        }
+      ],
+      "color": "#175e7a"
+    },
+    {
+      "id": "8OCDO13n-If4EPjwdRnRb",
+      "name": "UserClaim",
+      "x": 861.5489745808168,
+      "y": -442.4299619779692,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "5f5dxfSAH1Ea-DtTrBGZ5"
+        },
+        {
+          "id": "eObFLk8-TpQ9V6l_Q8Zep",
+          "name": "UserId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "4k-SyAeVDRiEZRs0u9VRr",
+          "name": "ClaimType",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "3sZTtCbAy2acVKiVg5g9G",
+          "name": "ClaimValue",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "IX_UserClaim_UserId",
+          "unique": false,
+          "fields": [
+            "UserId"
+          ]
+        }
+      ],
+      "color": "#175e7a"
+    },
+    {
+      "id": "yoCjnAXydBPIvxR96_9rH",
+      "name": "UserLogin",
+      "x": 338.20077300678497,
+      "y": -363.0143737555809,
+      "fields": [
+        {
+          "name": "LoginProvider",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "px6rJ-ql-7ssAOiWyYVNf",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "qnM5dhk-tAS3j3kwOCwCB",
+          "name": "ProviderKey",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "UaGCcF2M14u4vBxYLTEQV",
+          "name": "ProviderDisplayName",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ntQdsaOM7q4jhMfJhhowB",
+          "name": "UserId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "PK_UserLogin",
+          "unique": true,
+          "fields": [
+            "LoginProvider",
+            "ProviderKey"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "IX_UserLogin_UserId",
+          "unique": false,
+          "fields": [
+            "UserId"
+          ]
+        }
+      ],
+      "color": "#175e7a"
+    },
+    {
+      "id": "Ksom1CIln8NPoeyQCOLAy",
+      "name": "UserRole",
+      "x": 18.310220019838,
+      "y": 205.5909239228263,
+      "fields": [
+        {
+          "name": "UserId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "6kY4lAafLkIggsFmOEYx8",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "_ip6TW_tSVRHMTVnYK91O",
+          "name": "RoleId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "IX_UserRole_UserId",
+          "unique": false,
+          "fields": [
+            "UserId"
+          ]
+        }
+      ],
+      "color": "#175e7a"
+    },
+    {
+      "id": "YbEeBIAowOy8SjB9gSuCY",
+      "name": "UserToken",
+      "x": 336.5525180990072,
+      "y": -576.7312415714989,
+      "fields": [
+        {
+          "name": "UserId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "612x-Wleo6swrMtSeNNRh",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ip7GFnAYr335XgO4Lyazj",
+          "name": "LoginProvider",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "zngizmwx2_cSp4b5AjaDp",
+          "name": "Name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "21iOwrVLMznBL6PXD42DE",
+          "name": "Value",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a"
+    },
+    {
+      "id": "blp5Tvwq11LoJnlTuB19C",
+      "name": "Group",
+      "x": 857.6259560670596,
+      "y": 312.5290874139964,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "ODbzvR52NK2mOq2RNAeKp",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ZeVm_PB5-N2QsVt4m4Avm",
+          "name": "Name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#e00d0d"
+    },
+    {
+      "id": "yAWtthpmmf5gQr7FiPDSd",
+      "name": "GroupUser",
+      "x": 851.6402664261554,
+      "y": 76.0914429486595,
+      "fields": [
+        {
+          "id": "uSI9AFNECKBZ0ulgpU_H4",
+          "name": "UserId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "atemOjmRi_p8yHF4priDF",
+          "name": "GroupId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#e00d0d"
+    },
+    {
+      "id": "-BGZAgCcieWRd-sTGf5od",
+      "name": "Relationship",
+      "x": 859.3047412825176,
+      "y": 501.83320409707505,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "Ujofda94g4lngSTlojnp3",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "tfOSmhCwPKbFy25_05eXd",
+          "name": "PartyOneId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "KVzv5eTaexCbeo0EJW3QI",
+          "name": "PartyTwoId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "_m8hY-ly9cTlbFfciQ6qu",
+          "name": "CreatedAt",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#e00d0d"
+    },
+    {
+      "id": "sxspJ1Eaz4VkZKe6h3PpQ",
+      "name": "BlobEntry",
+      "x": 1483.4583191015677,
+      "y": 464.8190002564803,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "BIGSERIAL",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "Opl2MHanyS4Sc7Bxe-0dO",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ofS4za9njmvRfmcYO2E5g",
+          "name": "RelationshipId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CoYtNT6cguFjh71oKimXM",
+          "name": "BlobName",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "nL_U8iwGx2lxj0oihc-7E",
+          "name": "FileName",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "EjJGgRAM_EKQK3QMoTRJi",
+          "name": "CurrentVersion",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "YNs4QRIgQ55efa3zKQoyc",
+          "name": "CreatedAt",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#e00d0d"
+    },
+    {
+      "id": "_-ABftGdjArquVg7bPySM",
+      "name": "ChatMessage",
+      "x": 953.1111227980551,
+      "y": -178.56709921122786,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "BIGSERIAL",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "PI3hra0XfBzyB_cWGJzlt",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "byWvRX7vEm8WwjmR83zJn",
+          "name": "BlobEntryId",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "InDff-OqOTFrzIyRuvTWz",
+          "name": "UserId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "WOcAEddvH3Ls9Ovp7DKEY",
+          "name": "Content",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#e00d0d"
+    }
+  ],
+  "relationships": [
+    {
+      "startTableId": "q7izroH-jNKPfBr1OpcAk",
+      "startFieldId": "u1w7Qy6Glzy33ejCWFXhW",
+      "endTableId": "3YeS9qJDCphIX-d7cmE6i",
+      "endFieldId": "NkBes6ftPpdCd9BEhcbIO",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "name": "FK_RoleClaim_Role_RoleId",
+      "id": 0
+    },
+    {
+      "startTableId": "8OCDO13n-If4EPjwdRnRb",
+      "startFieldId": "eObFLk8-TpQ9V6l_Q8Zep",
+      "endTableId": "SphZfZ_qOOQJ2AM4NnPQ_",
+      "endFieldId": "TY1eX8xqoUpjYOm6XmH0V",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "name": "FK_UserClaim_User_UserId",
+      "id": 1
+    },
+    {
+      "startTableId": "yoCjnAXydBPIvxR96_9rH",
+      "startFieldId": "ntQdsaOM7q4jhMfJhhowB",
+      "endTableId": "SphZfZ_qOOQJ2AM4NnPQ_",
+      "endFieldId": "TY1eX8xqoUpjYOm6XmH0V",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "name": "FK_UserLogin_User_UserId",
+      "id": 2
+    },
+    {
+      "startTableId": "Ksom1CIln8NPoeyQCOLAy",
+      "startFieldId": "_ip6TW_tSVRHMTVnYK91O",
+      "endTableId": "3YeS9qJDCphIX-d7cmE6i",
+      "endFieldId": "NkBes6ftPpdCd9BEhcbIO",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "name": "FK_UserRole_Role_RoleId",
+      "id": 3
+    },
+    {
+      "startTableId": "Ksom1CIln8NPoeyQCOLAy",
+      "startFieldId": "6kY4lAafLkIggsFmOEYx8",
+      "endTableId": "SphZfZ_qOOQJ2AM4NnPQ_",
+      "endFieldId": "TY1eX8xqoUpjYOm6XmH0V",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "name": "FK_UserRole_User_UserId",
+      "id": 4
+    },
+    {
+      "startTableId": "YbEeBIAowOy8SjB9gSuCY",
+      "startFieldId": "612x-Wleo6swrMtSeNNRh",
+      "endTableId": "SphZfZ_qOOQJ2AM4NnPQ_",
+      "endFieldId": "TY1eX8xqoUpjYOm6XmH0V",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "name": "FK_UserToken_User_UserId",
+      "id": 5
+    },
+    {
+      "startTableId": "yAWtthpmmf5gQr7FiPDSd",
+      "startFieldId": "uSI9AFNECKBZ0ulgpU_H4",
+      "endTableId": "SphZfZ_qOOQJ2AM4NnPQ_",
+      "endFieldId": "TY1eX8xqoUpjYOm6XmH0V",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "name": "FK_GroupUser_Group_GroupId",
+      "id": 6
+    },
+    {
+      "startTableId": "yAWtthpmmf5gQr7FiPDSd",
+      "startFieldId": "atemOjmRi_p8yHF4priDF",
+      "endTableId": "blp5Tvwq11LoJnlTuB19C",
+      "endFieldId": "ODbzvR52NK2mOq2RNAeKp",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "name": "FK_GroupUser_User_UserId",
+      "id": 7
+    },
+    {
+      "startTableId": "sxspJ1Eaz4VkZKe6h3PpQ",
+      "startFieldId": "ofS4za9njmvRfmcYO2E5g",
+      "endTableId": "-BGZAgCcieWRd-sTGf5od",
+      "endFieldId": "Ujofda94g4lngSTlojnp3",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "name": "FK_BlobEntry_Relationship_RelationshipId",
+      "id": 8
+    },
+    {
+      "startTableId": "_-ABftGdjArquVg7bPySM",
+      "startFieldId": "byWvRX7vEm8WwjmR83zJn",
+      "endTableId": "sxspJ1Eaz4VkZKe6h3PpQ",
+      "endFieldId": "Opl2MHanyS4Sc7Bxe-0dO",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "name": "FK_ChatMessage_BlobEntryId_BlobEntry",
+      "id": 9
+    },
+    {
+      "startTableId": "_-ABftGdjArquVg7bPySM",
+      "startFieldId": "InDff-OqOTFrzIyRuvTWz",
+      "endTableId": "SphZfZ_qOOQJ2AM4NnPQ_",
+      "endFieldId": "TY1eX8xqoUpjYOm6XmH0V",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "name": "FK_ChatMessage_UserId_User",
+      "id": 10
+    }
+  ],
+  "notes": [],
+  "subjectAreas": [],
+  "database": "postgresql",
+  "types": [],
+  "enums": [],
+  "title": "docsfer"
+}

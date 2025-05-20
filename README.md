@@ -31,3 +31,18 @@ Requisitos não funcionais:
 - RNF004: O sistema deve possuir a estilização feita com TailwindCSS para facilidade de manutenção.
 - RNF005: O sistema deve possuir o back-end na linguagem C# utilizando ASP.NET Core para o cliente conseguir fazer manutenção.
 
+## Diagrama ER v1.0
+
+![ER Diagram](docs/images/er_diagram_v1.png)
+
+## Diagrama de Contexto
+
+![Context Diagram](docs/images/context_c4_diagram.png)
+
+## Diagrama de Contêiner
+
+![Container Diagram](docs/images/container_c4_diagram.png)
+
+## Diagrama de Componentes
+
+![Components Diagram](docs/images/component_c4_diagram.png)
