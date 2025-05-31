@@ -8,11 +8,13 @@ public class EmailManager : IEmailManager
 {
     private readonly IConfiguration _configuration;
     private readonly SmtpClient _smtpClient;
+    private readonly bool _enabled;
 
     public EmailManager(IConfiguration configuration, SmtpClient smtpClient)
     {
         _configuration = configuration;
         _smtpClient = smtpClient;
+        _enabled = _configuration["Smtp:Enabled"] == bool.TrueString;
     }
 
     public async Task SendAsync(string subject, string htmlMessage, params string[] toEmails)
