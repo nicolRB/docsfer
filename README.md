@@ -46,3 +46,7 @@ Requisitos não funcionais:
 ## Diagrama de Componentes
 
 ![Components Diagram](docs/images/component_c4_diagram.png)
+
+## Diagrama de Classes
+
+![Class Diagram](docs/images/class_diagram.png)
