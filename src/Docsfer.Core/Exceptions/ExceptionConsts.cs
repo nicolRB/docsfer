@@ -12,4 +12,5 @@ public static class ExceptionConsts
 
     public const string DownloadFilenameInvalid = "filename invalid";
     public const string InvalidFile = "invalid file";
+    public const string UserNotRelatedToBlob = "invalid file";
 }
