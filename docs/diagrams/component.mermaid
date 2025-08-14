@@ -1,0 +1,42 @@
+C4Component
+title Docsfer App - Diagrama de Componentes
+
+Person(user, "Usuário Final", "Pessoa que interage<br/>com o sistema.")
+
+System_Boundary(docsfer_system, "Docsfer") {
+    ContainerDb(db, "PostgreSQL", "Banco de Dados", "Armazena dados do sistema")
+    Container(blob, "Azurite", "Simulador Azure Blob", "Armazenamento de arquivos")
+    Container(smtp, "SMTP4Dev", "Servidor SMTP Fake", "Captura e-mails enviados")
+    Container(nginx, "NGINX", "Proxy reverso", "Encaminha requisições para<br/>o app ASP.NET Core")
+
+    Boundary(app_components, "") {
+        Component(auth, "AuthController", "ASP.NET Core Controller", "Responsável pela autenticação<br/>e login dos usuários")
+        Component(chat, "ChatController", "ASP.NET Core Controller", "Gerencia envio e recebimento<br/>de mensagens")
+        Component(version, "VersionController", "ASP.NET Core Controller", "Gerencia versões de arquivos")
+        Component(blobCtrl, "BlobController", "ASP.NET Core Controller", "Gerencia upload/download<br/>de arquivos")
+    }
+}
+
+
+Rel(user, nginx, "Encaminha as requisições")
+Rel(nginx, auth, "Realiza<br/>login/autenticação<br/>via")
+Rel(nginx, blobCtrl, "Envia/recebe<br/>arquivos via")
+Rel(nginx, chat, "Troca<br/>mensagens via")
+Rel(nginx, version, "Gerencia versões<br/>de arquivos via")
+
+UpdateRelStyle(nginx, auth, $offsetX="-370", $offsetY="70")
+UpdateRelStyle(nginx, blobCtrl, $offsetX="-20", $offsetY="70")
+UpdateRelStyle(nginx, chat, $offsetX="-220", $offsetY="70")
+UpdateRelStyle(nginx, version, $offsetX="-100", $offsetY="70")
+
+Rel(auth, db, "Valida credenciais<br/>e acessa dados")
+Rel(blobCtrl, blob, "Salva e recupera arquivos")
+Rel(blobCtrl, db, "Registra metadados<br/>dos arquivos")
+Rel(version, db, "Gerencia histórico<br/>e versões")
+Rel(version, smtp, "Envia e-mail de<br/>novo arquivo")
+Rel(chat, db, "Grava e<br/>lê mensagens")
+
+UpdateRelStyle(version, smtp, $offsetX="0", $offsetY="-70")
+UpdateRelStyle(blobCtrl, db, $offsetX="0", $offsetY="-20")
+UpdateRelStyle(version, smtp, $offsetX="0", $offsetY="-70")
+UpdateRelStyle(version, smtp, $offsetX="0", $offsetY="-70")

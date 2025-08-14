@@ -1,0 +1,103 @@
+classDiagram
+    class User {
+        +UUID Id
+        +string UserName
+        +string NormalizedUserName
+        +string Email
+        +string NormalizedEmail
+        +bool EmailConfirmed
+        +string PasswordHash
+        +string SecurityStamp
+        +string PhoneNumber
+        +bool PhoneNumberConfirmed
+        +bool TwoFactorEnabled
+        +datetime LockoutEnd
+        +bool LockoutEnabled
+        +int AccessFailedCount
+    }
+
+    class Role {
+        +int Id
+        +UUID Name
+        +string NormalizedName
+        +string ConcurrencyStamp
+    }
+
+    class UserRole {
+        +UUID UserId
+        +UUID RoleId
+    }
+
+    class RoleClaim {
+        +int Id
+        +UUID RoleId
+        +string ClaimType
+        +string ClaimValue
+    }
+
+    class UserClaim {
+        +int Id
+        +UUID UserId
+        +string ClaimType
+        +string ClaimValue
+    }
+
+    class UserLogin {
+        +string LoginProvider
+        +string ProviderKey
+        +string ProviderDisplayName
+        +UUID UserId
+    }
+
+    class UserToken {
+        +UUID UserId
+        +string LoginProvider
+        +string Name
+        +string Value
+    }
+
+    class ChatMessage {
+        +bigint Id
+        +bigint BlobEntryId
+        +UUID UserId
+        +string Content
+    }
+
+    class BlobEntry {
+        +bigint Id
+        +UUID RelationshipId
+        +string BlobName
+        +string FileName
+        +int CurrentVersion
+        +datetime CreatedAt
+    }
+
+    class Group {
+        +UUID Id
+        +string Name
+    }
+
+    class GroupUser {
+        +UUID UserId
+        +UUID GroupId
+    }
+
+    class Relationship {
+        +UUID Id
+        +UUID PartyOneId
+        +UUID PartyTwoId
+        +datetime CreatedAt
+    }
+
+    %% Relationships
+    User --> UserRole
+    Role --> UserRole
+    Role --> RoleClaim
+    User --> UserClaim
+    User --> UserLogin
+    User --> UserToken
+    User --> ChatMessage
+    User --> GroupUser
+    Group --> GroupUser
+    ChatMessage --> BlobEntry
+    BlobEntry --> Relationship

@@ -1,0 +1,13 @@
+C4Context
+title Sistema de Troca de Arquivos - Docsfer (Contexto)
+
+Person(user, "Usuário Final", "Pessoa que utiliza o sistema<br/>para trocar arquivos com<br/>outros usuários ou grupos.")
+
+System_Boundary(docsfer_boundary, "Docsfer") {
+    System(docsfer, "Docsfer", "Aplicação web ASP.NET Core<br />para troca de arquivos<br />entre usuários e grupos.")
+}
+
+System_Ext(sendgrid, "SendGrid", "Serviço externo para<br/>envio de e-mails.")
+
+Rel(user, docsfer, "", "")
+Rel(docsfer, sendgrid, "Envia e-mails via", "SMTP")
