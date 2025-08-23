@@ -45,7 +45,7 @@ public class BlobController : ControllerBase
         [FromForm] Guid from,
         [FromForm] Guid to)
     {
-        if (file == null || file.Length == 0)
+        if (file is null || file.Length == 0)
         {
             throw new InvalidFileException();
         }
@@ -54,13 +54,24 @@ public class BlobController : ControllerBase
 
         var relationship = (await _relationshipRepository.FindAsync(from, to)).EnsureExists();
 
-        var blobEntry = new BlobEntry
-        {
-            FileName = file.FileName,
-            Relationship = relationship,
-        };
+        var blobEntry = await _blobEntryRepository.GetBlobByFileName(relationship, file.FileName);
 
-        await _blobEntryRepository.InsertAsync(blobEntry);
+        if (blobEntry is null)
+        {
+            blobEntry = new BlobEntry
+            {
+                FileName = file.FileName,
+                Relationship = relationship,
+                CurrentVersion = 1,
+            };
+
+            await _blobEntryRepository.InsertAsync(blobEntry);
+        }
+        else
+        {
+            blobEntry.CurrentVersion += 1;
+            await _blobEntryRepository.UpdateAsync(blobEntry);
+        }
 
         var path = $"{relationship.Id}/{blobEntry.BlobName}.v{blobEntry.CurrentVersion}.file";
         var blobClient = _blobContainerClient.GetBlobClient(path);

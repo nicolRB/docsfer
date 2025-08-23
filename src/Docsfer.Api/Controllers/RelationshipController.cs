@@ -13,6 +13,7 @@ public class RelationshipController(
     IRelationshipRepository relationshipRepository) : ControllerBase
 {
     [HttpPost]
+    [Route("")]
     public async Task<IActionResult> Post(PostRelationshipInput input)
     {
         var relationship = new Relationship
