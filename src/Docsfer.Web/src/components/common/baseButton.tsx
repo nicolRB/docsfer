@@ -43,7 +43,7 @@ const BaseButton: React.FC<BaseButtonProps> = ({
   return (
     <button
       type={type}
-      className={`inline-flex items-center justify-center w-full rounded-lg font-semibold gap-2 h-default p-3 ${variantClasses} ${className}`}
+      className={`inline-flex items-center transition-all duration-300 justify-center w-full rounded-sm font-semibold gap-2 h-default p-3 ${variantClasses} ${className}`}
       {...rest}
     >
       {iconPosition === "left" && renderIcon()}

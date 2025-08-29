@@ -1,10 +1,16 @@
 import React from "react";
 import LoginInput from "../components/common/loginInput";
 import BaseButton from "../components/common/baseButton";
-import NewButton from "../components/common/newButton";
 import { LayoutGrid } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/dashboard");
+  };
+
   return (
     <div className="flex w-screen h-dvh bg-main-100 overflow-hidden">
       <section className="h-dvh hidden lg:flex lg:justify-between lg:flex-col pt-12  lg:w-[36dvw] bg-main-300">
@@ -16,7 +22,7 @@ const LoginPage = () => {
             className="absolute left-14 top-48"
           />
         </div>
-        <div className="absolute left-0 top-0 h-full z-0 overflow-hidden hidden xl:block">
+        <div className="absolute left-0 top-0 h-full z-0 overflow-hidden hidden 2xl:block">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="777"
@@ -31,9 +37,9 @@ const LoginPage = () => {
           </svg>
         </div>
       </section>
-      <section className="h-dvh lg:w-[64dvw]">
+      <section className="h-dvh w-full lg:w-[64dvw]">
         <main className="flex relative items-center justify-start h-full">
-          <div className="w-full sm:py-8 !px-16 md:ml-20 xl:ml-64  max-w-xl">
+          <div className="w-full sm:py-8 !px-16 md:ml-20 lg:ml-64 xl:ml-40  max-w-xl">
             <form>
               <div className="flex flex-col gap-4">
                 <BaseButton variant="full" showIcon icon={<LayoutGrid />}>
@@ -55,8 +61,9 @@ const LoginPage = () => {
                   placeholder="Sua senha"
                   type="Password"
                 />
-                <BaseButton variant="border">Entrar com email</BaseButton>
-                <NewButton />
+                <BaseButton variant="border" onClick={handleLogin}>
+                  Entrar com email
+                </BaseButton>
               </div>
             </form>
           </div>

@@ -14,7 +14,7 @@ const loginInput: React.FC<LoginInputProps> = ({
   return (
     <fieldset className="flex flex-col-reverse gap-2 items-start justify-start group">
       <input
-        className="flex items-center text-sm peer w-full h-default p-3 rounded-lg border-2 border-black/15 focus:border-gray-600 placeholder:text-black/25 outline-none font-semibold transition-all ease-in duration-300 group"
+        className="flex items-center text-sm peer w-full h-default p-3 rounded-sm border-2 border-black/15 focus:border-gray-600 placeholder:text-black/25 outline-none font-semibold transition-all ease-in-out duration-300 group focus:tracking-wide "
         type={type}
         id="mail"
         placeholder={placeholder}
