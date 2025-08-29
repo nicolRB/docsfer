@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-gabarito: "Gabarito", "sans-serif";
+  --font-quicksand: "Quicksand", "sans-serif";
+  --font-josefin: "Josefin Sans", "sans-serif";
+
+  --color-main-100: #e0eaff;
+  --color-main-200: #e8eaee;
+  --color-main-300: #85aff6;
+
+  --color-btn-100: #4a7ae1;
+  --color-btn-200: #3664ca;
+  --color-btn-300: #2e55ad;
+
+  --color-text: #243d4a;
+  --color-text-grayed: #8293a4;
+
+  --height-default: 3.5rem;
+}
+
+@layer components {
+  .login-button__anim {
+    @apply peer-placeholder-shown:text-black/20 peer-focus:text-gray-600 peer-[&:not(:placeholder-shown)]:text-gray-600;
+  }
+}
