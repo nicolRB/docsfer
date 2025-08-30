@@ -1,4 +1,5 @@
 using Docsfer.Api.Middlewares;
+using Docsfer.Api.Repositories;
 using Docsfer.Core.Identity;
 using Docsfer.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -36,14 +37,14 @@ builder.Services.AddOpenApi("v1");
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        options.ExpireTimeSpan = TimeSpan.FromDays(1);
         options.SlidingExpiration = true;
-    })
-    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-    {
-        options.Authority = jwtAuthority;
-        options.Audience = jwtAudience;
     });
+    // .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+    // {
+    //     options.Authority = jwtAuthority;
+    //     options.Audience = jwtAudience;
+    // });
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -102,6 +103,12 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
 });
+
+builder.Services.Scan(scan => scan
+    .FromAssemblyOf<IRelationshipRepository>()
+    .AddClasses(classes => classes.InNamespaces("Docsfer.Api.Repositories"))
+    .AsImplementedInterfaces()
+    .WithScopedLifetime());
 
 builder.Services.AddControllers();
 

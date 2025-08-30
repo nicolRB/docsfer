@@ -1,6 +1,8 @@
+using System.Security.Claims;
 using Docsfer.Core.Exceptions.Identity;
 using Docsfer.Core.Identity;
 using Docsfer.Core.Shared.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +15,28 @@ public class AuthenticationController(
     UserManager<User> userManager,
     IConfiguration configuration) : ControllerBase
 {
+    [Authorize]
+    [HttpGet("me")]
+    public IActionResult GetMyId()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (userId is null)
+        {
+            return Unauthorized(new
+            {
+                message = "User with no ID",
+            });
+        }
+
+        var guid = Guid.Parse(userId);
+
+        return Ok(new
+        {
+            userId = guid
+        });
+    }
+
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterInput input)
     {

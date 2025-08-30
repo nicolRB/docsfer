@@ -39,6 +39,29 @@ public class BlobController : ControllerBase
         _userManager = userManager;
     }
 
+    [HttpGet]
+    [Route("path")]
+    public async Task<IActionResult> Path(
+        [FromQuery] Guid relationshipId,
+        [FromQuery] string blobEntryFileName,
+        [FromQuery] int version)
+    {
+        var relationship = (await _relationshipRepository.FindByIdAsync(relationshipId)).EnsureExists();
+        var blobEntry = (await _blobEntryRepository.GetBlobByFileName(relationship, blobEntryFileName)).EnsureExists();
+
+        if (version < 1)
+        {
+            version = blobEntry.CurrentVersion;
+        }
+
+        var path = $"{relationship.Id}/{blobEntry.BlobName}.v{version}.file";
+
+        return Ok(new
+        {
+            path
+        });
+    }
+
     [HttpPost("upload")]
     public async Task<IActionResult> Upload(
         [FromForm] IFormFile file,
