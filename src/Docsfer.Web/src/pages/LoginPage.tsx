@@ -1,4 +1,3 @@
-import React from "react";
 import LoginInput from "../components/common/loginInput";
 import BaseButton from "../components/common/baseButton";
 import { LayoutGrid } from "lucide-react";
