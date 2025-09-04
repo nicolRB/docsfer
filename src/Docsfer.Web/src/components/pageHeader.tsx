@@ -13,8 +13,8 @@ const pageHeader = () => {
           <CloudUpload />
           <Bell />
           <span className="text-lg">Username</span>
-          <span className="flex items-center justify-center uppercase rounded-full w-8 h-8  border-2 border-black/50">
-            i
+          <span className="pt-1 inline-flex items-center justify-center text-center uppercase rounded-full w-8 h-8  border-2 border-black/50">
+            V
           </span>
         </div>
       </nav>
