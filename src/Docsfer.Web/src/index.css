@@ -25,4 +25,8 @@
   .login-button__anim {
     @apply peer-placeholder-shown:text-black/20 peer-focus:text-gray-600 peer-[&:not(:placeholder-shown)]:text-gray-600;
   }
+
+  .header-button__style {
+    @apply inline-flex justify-center items-center relative cursor-pointer space-x-2 text-center ease-out duration-300 transition-all outline-none hover:bg-zinc-300 w-9 h-7;
+  }
 }
