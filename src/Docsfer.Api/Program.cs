@@ -1,4 +1,5 @@
 using Docsfer.Api.Middlewares;
+using Docsfer.Api.Repositories;
 using Docsfer.Core.Identity;
 using Docsfer.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -50,6 +51,15 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.SameSite = SameSiteMode.None;
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
 });
+
+builder.Services.AddControllers();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IChatRepository, ChatRepository>();
+
+builder.Services.AddScoped<IBlobEntryRepository, FakeBlobEntryRepository>();
 
 if (!string.IsNullOrWhiteSpace(githubClientId) && !string.IsNullOrWhiteSpace(githubClientSecret))
 {
@@ -113,13 +123,18 @@ builder.Services.AddIdentityApiEndpoints<User>()
 
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionHandlingMiddleware>();
+// app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
-// if (app.Environment.IsDevelopment())
-// {
-app.MapOpenApi("/api/docs/{documentName}.json");
-// }
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Docsfer API v1");
+        options.RoutePrefix = "swagger"; // URL: /swagger
+    });
+}
 
 app.MapControllers();
 
