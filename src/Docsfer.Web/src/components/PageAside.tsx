@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { House, ChevronsRight, Users } from "lucide-react";
-import { useNavigate, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const PageAside = () => {
-  const navigate = useNavigate();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
 
@@ -31,12 +30,7 @@ const PageAside = () => {
 
   const sidebarWidth = isExpanded || isPinned ? "w-64" : "w-16";
 
-  const handleClickRoute = () => {
-    navigate("/dashboard");
-    alert("clicou");
-  };
-
-  // TODO: FIX HEIGHT ON HOVER
+  // TODO: IMPLEMENT LIGHT MODE FOR THE LOVE OF GOD
   return (
     <div className="fixed flex h-[calc(100dvh-48px)]">
       <div
@@ -75,6 +69,7 @@ const PageAside = () => {
           </ul>
         </nav>
         <div className="flex items-center justify-center w-16 h-12 dark:text-zinc-400">
+          {/* TODO: IMPLEMENT A WAY TO TOGGLE IF HOVER CHANGES THE WIDTH OR NOT WITH A TOOLTIP MENU */}
           <div
             className="p-3 dark:hover:bg-zinc-800 rounded-lg mb-4"
             onClick={togglePin}
