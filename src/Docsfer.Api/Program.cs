@@ -59,7 +59,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IChatRepository, ChatRepository>();
 
-builder.Services.AddScoped<IBlobEntryRepository, FakeBlobEntryRepository>();
+builder.Services.AddScoped<IBlobEntryRepository, BlobEntryRepository>();
 
 if (!string.IsNullOrWhiteSpace(githubClientId) && !string.IsNullOrWhiteSpace(githubClientSecret))
 {
