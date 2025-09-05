@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { House, ChevronsRight, Home } from "lucide-react";
+import { House, ChevronsRight, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const PageAside = () => {
@@ -7,7 +7,10 @@ const PageAside = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
 
-  const menuItems = [{ icon: Home, label: "Dashboard" }];
+  const menuItems = [
+    { icon: House, label: "Dashboard" },
+    { icon: Users, label: "Groups" },
+  ];
 
   const handleMouseEnter = () => {
     if (!isPinned) {
@@ -33,6 +36,7 @@ const PageAside = () => {
     alert("clicou");
   };
 
+  // TODO: FIX HEIGHT ON HOVER
   return (
     <div className="fixed flex h-screen">
       <div
@@ -40,15 +44,26 @@ const PageAside = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <nav className="flex-1 p-4">
-          <ul className="space-y-2">
+        <nav className={`flex-1 p-2`}>
+          <ul className="">
             {menuItems.map((item, index) => (
               <li key={index}>
                 <button
                   type="button"
                   onClick={handleClickRoute}
-                  className="flex items-center space-x-3 p-3 rounded-lg hover:bg-zinc-800"
-                ></button>
+                  className="flex items-center w-full p-3 gap-2 font-gabarito rounded-lg dark:hover:bg-zinc-800 dark:text-zinc-200"
+                >
+                  <item.icon className="size-5 flex-shrink-0 dark:text-zinc-400" />
+                  <span
+                    className={`${
+                      isExpanded || isPinned
+                        ? "opacity-100 visible"
+                        : "opacity-0 invisible p-0 m-0 size-0"
+                    } transition-all duration-300 whitespace-nowrap`}
+                  >
+                    {item.label}
+                  </span>
+                </button>
               </li>
             ))}
           </ul>
