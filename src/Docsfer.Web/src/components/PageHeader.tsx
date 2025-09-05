@@ -2,7 +2,7 @@ import React from "react";
 import { CloudUpload, Bell } from "lucide-react";
 // import { useNavigate } from "react-router-dom";
 import usePageName from "../hooks/usePageName";
-import Tooltip from "./base/Tooltip";
+import { Tooltip } from "primereact/tooltip";
 
 const PageHeader = () => {
   const pageName: string = usePageName();
@@ -32,20 +32,42 @@ const PageHeader = () => {
         </div>
         <div className="flex gap-4 items-center text-gray-800 dark:text-zinc-400">
           <div className="overflow-hidden flex  items-center rounded-full border border-zinc-400 dark:border-zinc-700">
-            <button type="button" className="header-button__style group">
-              <Tooltip text="Compartilhar">
-                <div className="[&_svg]:h-5 [&_svg]:w-5">
-                  <CloudUpload onClick={navImport} />
-                </div>
-              </Tooltip>
+            <Tooltip
+              target="#upload"
+              autoHide={false}
+              pt={{
+                text: { className: "text-sm text-zinc-400" },
+              }}
+            />
+            <button
+              data-pr-tooltip="Upload"
+              data-pr-position="bottom"
+              id="upload"
+              type="button"
+              className="header-button__style group"
+            >
+              <div className="[&_svg]:h-5 [&_svg]:w-5">
+                <CloudUpload onClick={navImport} />
+              </div>
             </button>
 
-            <button type="button" className="header-button__style">
-              <Tooltip text="Notificações">
-                <div className="[&_svg]:h-5 [&_svg]:w-5">
-                  <Bell />
-                </div>
-              </Tooltip>
+            <Tooltip
+              target="#notifs"
+              autoHide={false}
+              pt={{
+                text: { className: "text-sm text-zinc-400" },
+              }}
+            />
+            <button
+              id="notifs"
+              data-pr-tooltip="Sem notificações"
+              data-pr-position="bottom"
+              type="button"
+              className="header-button__style"
+            >
+              <div className="[&_svg]:h-5 [&_svg]:w-5">
+                <Bell />
+              </div>
             </button>
           </div>
           <span className="inline-flex items-center justify-center text-center uppercase rounded-full size-8  border-2 border-sky-900 text-sky-900 dark:border-sky-500 dark:text-sky-500 font-semibold cursor-pointer font-quicksand">

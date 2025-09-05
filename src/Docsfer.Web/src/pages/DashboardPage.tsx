@@ -44,7 +44,6 @@ const DashboardPage = () => {
             <h2 className="font-josefin text-xl dark:text-zinc-400">
               Bem-vindo de volta, Jaozin!
             </h2>
-
             <div className="flex flex-col gap-12">
               {/* ↓ Seção 1: Atividade recente ↓ */}
               <div className="flex flex-col pt-4 w-full gap-2 overflow-x-auto">
