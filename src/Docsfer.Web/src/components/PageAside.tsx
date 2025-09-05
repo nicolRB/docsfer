@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { House, ChevronsRight, Users } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const PageAside = () => {
   const navigate = useNavigate();
@@ -8,8 +8,8 @@ const PageAside = () => {
   const [isPinned, setIsPinned] = useState(false);
 
   const menuItems = [
-    { icon: House, label: "Dashboard" },
-    { icon: Users, label: "Groups" },
+    { to: "/dashboard", icon: House, label: "Dashboard", exact: true },
+    { to: "/groups", icon: Users, label: "Groups" },
   ];
 
   const handleMouseEnter = () => {
@@ -40,30 +40,36 @@ const PageAside = () => {
   return (
     <div className="fixed flex h-screen">
       <div
-        className={`transition-all duration-300 ease-in-out ${sidebarWidth} flex flex-col relative border-r border-zinc-700`}
+        className={`transition-all duration-200 ease-in-out ${sidebarWidth} flex flex-col relative border-r border-zinc-700`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <nav className={`flex-1 p-2`}>
-          <ul className="">
-            {menuItems.map((item, index) => (
-              <li key={index}>
-                <button
-                  type="button"
-                  onClick={handleClickRoute}
-                  className="flex items-center w-full p-3 gap-2 font-gabarito rounded-lg dark:hover:bg-zinc-800 dark:text-zinc-200"
+          <ul className="flex flex-col gap-2">
+            {menuItems.map(({ to, icon: Icon, label, exact }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  end={!!exact}
+                  className={({ isActive }) =>
+                    `flex items-center w-full py-3 px-3.5 gap-3 font-gabarito rounded-lg dark:hover:bg-zinc-800 dark:text-zinc-200 ${
+                      isActive
+                        ? "dark:bg-zinc-800 dark:text-zinc-200"
+                        : "dark:text-zinc-500"
+                    }`
+                  }
                 >
-                  <item.icon className="size-5 flex-shrink-0 dark:text-zinc-400" />
+                  <Icon className="size-5 flex-shrink-0 " />
                   <span
                     className={`${
                       isExpanded || isPinned
                         ? "opacity-100 visible"
-                        : "opacity-0 invisible p-0 m-0 size-0"
+                        : "opacity-0 invisible p-0 m-0"
                     } transition-all duration-300 whitespace-nowrap`}
                   >
-                    {item.label}
+                    {label}
                   </span>
-                </button>
+                </NavLink>
               </li>
             ))}
           </ul>
