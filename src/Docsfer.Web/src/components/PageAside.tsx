@@ -34,7 +34,7 @@ const PageAside = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="fixed flex h-screen">
       <div
         className={`transition-all duration-300 ease-in-out ${sidebarWidth} flex flex-col relative border-r border-zinc-700`}
         onMouseEnter={handleMouseEnter}

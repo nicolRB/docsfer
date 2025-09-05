@@ -2,6 +2,11 @@
 
 @import "tailwindcss";
 
+@plugin "tailwind-scrollbar" {
+  nocompatible: true;
+  preferredstrategy: "pseudoelements";
+}
+
 @theme {
   --font-gabarito: "Gabarito", "sans-serif";
   --font-quicksand: "Quicksand", "sans-serif";
@@ -28,5 +33,11 @@
 
   .header-button__style {
     @apply inline-flex justify-center items-center relative cursor-pointer space-x-2 text-center ease-out duration-300 transition-all outline-none hover:bg-zinc-300 dark:hover:bg-zinc-800 w-9 h-7;
+  }
+}
+
+@layer base {
+  * {
+    @apply scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-700 scrollbar-hover:scrollbar-thumb-zinc-600;
   }
 }
