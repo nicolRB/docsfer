@@ -38,7 +38,7 @@ const PageAside = () => {
 
   // TODO: FIX HEIGHT ON HOVER
   return (
-    <div className="fixed flex h-screen">
+    <div className="fixed flex h-[calc(100dvh-48px)]">
       <div
         className={`transition-all duration-200 ease-in-out ${sidebarWidth} flex flex-col relative border-r border-zinc-700`}
         onMouseEnter={handleMouseEnter}
@@ -74,6 +74,14 @@ const PageAside = () => {
             ))}
           </ul>
         </nav>
+        <div className="flex items-center justify-center w-16 h-12 dark:text-zinc-400">
+          <div
+            className="p-3 dark:hover:bg-zinc-800 rounded-lg mb-4"
+            onClick={togglePin}
+          >
+            <ChevronsRight />
+          </div>
+        </div>
       </div>
     </div>
   );
