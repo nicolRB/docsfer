@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { House, ChevronsRight, Users } from "lucide-react";
+import { House, ChevronsRight, Users, Folders } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const PageAside = () => {
@@ -8,7 +8,8 @@ const PageAside = () => {
 
   const menuItems = [
     { to: "/dashboard", icon: House, label: "Dashboard", exact: true },
-    { to: "/groups", icon: Users, label: "Groups" },
+    { to: "/groups", icon: Users, label: "Grupos" },
+    { to: "/files", icon: Folders, label: "Todos os arquivos" },
   ];
 
   const handleMouseEnter = () => {
@@ -71,7 +72,9 @@ const PageAside = () => {
         <div className="flex items-center justify-center w-16 h-12 dark:text-zinc-400">
           {/* TODO: IMPLEMENT A WAY TO TOGGLE IF HOVER CHANGES THE WIDTH OR NOT WITH A TOOLTIP MENU */}
           <div
-            className="p-3 dark:hover:bg-zinc-800 rounded-lg mb-4"
+            className={`p-3 dark:hover:bg-zinc-800 rounded-lg mb-4 ${
+              isPinned ? "dark:text-zinc-200 dark:bg-zinc-800" : ""
+            }`}
             onClick={togglePin}
           >
             <ChevronsRight />
