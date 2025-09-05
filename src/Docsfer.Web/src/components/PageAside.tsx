@@ -33,9 +33,9 @@ const PageAside = () => {
 
   // TODO: IMPLEMENT LIGHT MODE FOR THE LOVE OF GOD
   return (
-    <div className="fixed flex h-[calc(100dvh-48px)]">
+    <div className="fixed flex h-[calc(100dvh-48px)] z-50 bg-zinc-200 dark:bg-zinc-900">
       <div
-        className={`transition-all duration-200 ease-in-out ${sidebarWidth} flex flex-col relative border-r border-zinc-700`}
+        className={`transition-all duration-200 ease-in-out ${sidebarWidth} flex flex-col relative  border-r border-zinc-700`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

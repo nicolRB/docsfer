@@ -48,8 +48,8 @@ const PageHeader = () => {
               </Tooltip>
             </button>
           </div>
-          <span className="pt-1 inline-flex items-center justify-center text-center uppercase rounded-full w-8 h-8  border-2 border-sky-900 text-sky-900 dark:border-sky-500 dark:text-sky-500 font-semibold cursor-pointer">
-            V
+          <span className="inline-flex items-center justify-center text-center uppercase rounded-full size-8  border-2 border-sky-900 text-sky-900 dark:border-sky-500 dark:text-sky-500 font-semibold cursor-pointer font-quicksand">
+            J
           </span>
         </div>
       </nav>
