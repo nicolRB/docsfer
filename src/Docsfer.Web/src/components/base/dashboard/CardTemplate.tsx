@@ -97,7 +97,7 @@ const CardTemplate: React.FC<CardInfos> = ({
   const fileColor = getFileColor(item);
 
   return (
-    <div className="inline-flex flex-col justify-between gap-3 p-3 rounded-lg border-2 border-dashed dark:border-sky-800 dark:bg-zinc-800">
+    <div className="inline-flex flex-col min-w-64 justify-between gap-3 p-3 rounded-lg border-2 border-dashed dark:border-sky-800 dark:bg-zinc-800">
       <div className="flex flex-col">
         <div className="flex justify-between font-quicksand">
           <span className="text-zinc-200 text-lg font-semibold">
