@@ -14,7 +14,7 @@ const PageHeader = () => {
   };
 
   return (
-    <header className="flex items-center w-dvw h-12 font-josefin border-b border-gray-400 dark:border-zinc-700">
+    <header className="flex items-center w-full h-12 font-josefin border-b border-gray-400 dark:border-zinc-700">
       {/* header content */}
       <nav className="flex w-full px-4 justify-between items-center">
         <div className="inline-flex justify-center items-center">
