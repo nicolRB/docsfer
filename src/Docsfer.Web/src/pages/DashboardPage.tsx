@@ -87,6 +87,7 @@ const DashboardPage = () => {
               Meus Arquivos
             </h3>
             {/* TODO: Change the DataTable to make it so that each column is a <Column/>, this will make better customization possible (like clicking in a file to open its page) */}
+            {/* TODO: ADD TITLE ON HOVER TO THE COLUMNS */}
             <DataTable
               value={products}
               tableStyle={{
