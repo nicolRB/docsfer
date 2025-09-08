@@ -2,6 +2,8 @@ import React from "react";
 import PageHeader from "../components/PageHeader";
 import PageAside from "../components/PageAside";
 import CardTemplate from "../components/base/dashboard/CardTemplate";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
 
 const DashboardPage = () => {
   const cardMock = [
@@ -34,6 +36,32 @@ const DashboardPage = () => {
     },
   ];
 
+  const mockColumns = [
+    { field: "Arquivo", header: "Arquivo" },
+    { field: "sharedWith", header: "Compartilhado com" },
+    { field: "sharedAt", header: "Data de envio" },
+    { field: "groups", header: "Grupos" },
+    { field: "Size", header: "Tamanho" },
+    { field: "Ações", header: "Ações" },
+  ];
+
+  const products = [
+    {
+      Arquivo: "File1.xlsx",
+      sharedWith: "Jaozin Jaozao",
+      sharedAt: "31/12/2012",
+      groups: "RH",
+      Size: "12mb",
+    },
+    {
+      Arquivo: "File1.xlsx",
+      sharedWith: "Jaozin Jaozao",
+      sharedAt: "31/12/2012",
+      groups: "RH",
+      Size: "12mb",
+    },
+  ];
+
   return (
     <div className="min-h-dvh w-dvw bg-zinc-100 dark:bg-zinc-900 overflow-hidden scrollbar-thin scrollbar-track-zinc-900">
       <PageHeader />
@@ -59,10 +87,28 @@ const DashboardPage = () => {
                 </div>
               </div>
               {/* ↓ Seção 2: Arquivos Enviados ↓ */}
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-2">
                 <h3 className="inline-flex w-fit font-gabarito dark:text-sky-500 tracking-wider px-3 py-2 rounded-sm dark:bg-sky-500/20">
                   Meus Arquivos
                 </h3>
+                {/* TODO: Change the DataTable to make it so that each column is a <Column/>, this will make better customization possible (like clicking in a file to open its page) */}
+                <DataTable
+                  value={products}
+                  tableStyle={{
+                    minWidth: "50dvw",
+                    fontSize: "14px",
+                    width: "min-content",
+                    textWrap: "nowrap",
+                  }}
+                >
+                  {mockColumns.map((col) => (
+                    <Column
+                      key="col.field"
+                      field={col.field}
+                      header={col.header}
+                    />
+                  ))}
+                </DataTable>
               </div>
               {/* ↓ Seção 3: Todos os Arquivos ↓ */}
               <div className="flex flex-col"></div>
