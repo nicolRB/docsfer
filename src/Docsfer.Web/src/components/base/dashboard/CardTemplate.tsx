@@ -1,5 +1,6 @@
 import React from "react";
 import { FileText, Share2, Download, Upload, Trash2 } from "lucide-react";
+import { useFileColor } from "../../../hooks/useFileColor";
 
 interface CardInfos {
   username: string;
@@ -59,31 +60,6 @@ const formatDate = (dateString: string): string => {
   }
 };
 
-const getFileColor = (filename: string): string => {
-  const ext = filename.split(".").pop()?.toLowerCase();
-
-  switch (ext) {
-    case "pdf":
-      return "text-red-400";
-    case "doc":
-    case "docx":
-      return "text-blue-400";
-    case "xls":
-    case "xlsx":
-      return "text-green-400";
-    case "ppt":
-    case "pptx":
-      return "text-orange-400";
-    case "jpg":
-    case "jpeg":
-    case "png":
-    case "gif":
-      return "text-purple-400";
-    default:
-      return "text-sky-400";
-  }
-};
-
 const CardTemplate: React.FC<CardInfos> = ({
   username,
   date,
@@ -94,7 +70,7 @@ const CardTemplate: React.FC<CardInfos> = ({
   const initials = getUserInitials(username);
   const actionIcon = getActionIcon(action);
   const formattedDate = formatDate(date);
-  const fileColor = getFileColor(item);
+  const fileColor = useFileColor(item);
 
   return (
     <div className="inline-flex flex-col min-w-64 justify-between gap-3 p-3 rounded-lg border-2 border-dashed dark:border-sky-800 dark:bg-zinc-800">

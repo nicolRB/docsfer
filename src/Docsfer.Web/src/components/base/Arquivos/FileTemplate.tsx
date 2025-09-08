@@ -1,5 +1,6 @@
 import React from "react";
 import { Folder, Ellipsis } from "lucide-react";
+import { useFileColor } from "../../../hooks/useFileColor";
 
 interface FileDetails {
   fileName: string;
@@ -18,6 +19,8 @@ const FileTemplate: React.FC<FileDetails> = ({
   fileMinorVersion = 0,
   sharedBy,
 }) => {
+  const fileColor = useFileColor(fileName);
+
   function formatDate(dateStr: string) {
     const [day, month, year] = dateStr.split("/").map(Number);
     const date = new Date(year, month - 1, day);
@@ -37,7 +40,9 @@ const FileTemplate: React.FC<FileDetails> = ({
       <div className="flex flex-col w-full">
         {/* icon + more (ellipsis) */}
         <div className="flex justify-between p-3">
-          <Folder className="fill-sky-500 stroke-sky-500 size-8" />
+          <Folder
+            className={`${fileColor} stroke-current fill-current size-8`}
+          />
           <Ellipsis className="text-zinc-200 hover:cursor-pointer" />
         </div>
         <div className="flex flex-col gap-2 justify-start items-start px-3">

@@ -55,7 +55,7 @@ const AllfilesPage = () => {
   ];
 
   return (
-    <div className="h-[400dvh] ml-16">
+    <div className=" ml-16">
       <div className="flex flex-col gap-2 px-6 py-4">
         <h2 className="font-josefin text-xl dark:text-zinc-400">
           Todos os seus arquivos
