@@ -85,4 +85,4 @@ const PageAside = () => {
   );
 };
 
-export default PageAside;
+export default React.memo(PageAside);

@@ -3,6 +3,7 @@ import Dashboard from "../pages/DashboardPage";
 import Group from "../pages/GroupPage";
 import AllfilesPage from "../pages/Arquivos/AllfilesPage";
 import FileDetailsPage from "../pages/Arquivos/FileDetailsPage";
+import RootLayout from "../layout/rootLayout";
 
 export const ROUTES = [
   {
@@ -10,6 +11,16 @@ export const ROUTES = [
     element: <Login />,
     label: "Login",
   },
+  /*   {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      { path: '/dashboard',
+        element: <Dashboard />,
+        label: "Dashboard"
+      },
+    ]
+  }, */
   {
     path: "/dashboard",
     element: <Dashboard />,
