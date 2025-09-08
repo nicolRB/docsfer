@@ -1,5 +1,3 @@
-import React from "react";
-
 import CardTemplate from "../components/base/dashboard/CardTemplate";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";

@@ -1,4 +1,3 @@
-import React from "react";
 import FileTemplate from "../../components/base/Arquivos/FileTemplate";
 
 const AllfilesPage = () => {

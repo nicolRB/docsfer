@@ -1,8 +1,7 @@
-import React from "react";
 import { CloudUpload, Bell } from "lucide-react";
-// import { useNavigate } from "react-router-dom";
 import usePageName from "../hooks/usePageName";
 import { Tooltip } from "primereact/tooltip";
+import { NavLink } from "react-router-dom";
 
 const PageHeader = () => {
   const pageName: string = usePageName();
@@ -10,7 +9,6 @@ const PageHeader = () => {
 
   const navImport = () => {
     // navigate("/");
-    alert("botão pra ir direto para a tela de compartilhar novo arquivo");
   };
 
   return (
@@ -47,7 +45,9 @@ const PageHeader = () => {
               className="header-button__style group"
             >
               <div className="[&_svg]:h-5 [&_svg]:w-5">
-                <CloudUpload onClick={navImport} />
+                <NavLink to={"/newFile"}>
+                  <CloudUpload onClick={navImport} />
+                </NavLink>
               </div>
             </button>
 

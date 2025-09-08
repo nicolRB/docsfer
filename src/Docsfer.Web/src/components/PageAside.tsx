@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { House, ChevronsRight, Users, Folders } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
