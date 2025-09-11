@@ -1,6 +1,5 @@
 import { CloudUpload, Bell } from "lucide-react";
 import usePageName from "../hooks/usePageName";
-import { Tooltip } from "primereact/tooltip";
 import { useNavigate } from "react-router";
 
 export const PageHeader = () => {
@@ -36,16 +35,7 @@ export const PageHeader = () => {
         </div>
         <div className="flex gap-4 items-center text-gray-800 dark:text-zinc-400">
           <div className="overflow-hidden flex  items-center rounded-full border border-zinc-400 dark:border-zinc-700">
-            <Tooltip
-              target="#upload"
-              autoHide={false}
-              pt={{
-                text: { className: "text-sm text-zinc-400" },
-              }}
-            />
             <button
-              data-pr-tooltip="Upload"
-              data-pr-position="bottom"
               id="upload"
               type="button"
               className="header-button__style group"
@@ -57,20 +47,7 @@ export const PageHeader = () => {
               </div>
             </button>
 
-            <Tooltip
-              target="#notifs"
-              autoHide={false}
-              pt={{
-                text: { className: "text-sm text-zinc-400" },
-              }}
-            />
-            <button
-              id="notifs"
-              data-pr-tooltip="Sem notificações"
-              data-pr-position="bottom"
-              type="button"
-              className="header-button__style"
-            >
+            <button id="notifs" type="button" className="header-button__style">
               <div className="[&_svg]:h-5 [&_svg]:w-5">
                 <Bell />
               </div>

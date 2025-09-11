@@ -1,6 +1,4 @@
 import { CardTemplate } from "../components/base/dashboard/CardTemplate";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
 
 const DashboardPage = () => {
   const cardMock = [
@@ -30,32 +28,6 @@ const DashboardPage = () => {
       date: "05/09/2025 20:00:01",
       action: "Baixou",
       item: "SatoruGojo.gif",
-    },
-  ];
-
-  const mockColumns = [
-    { field: "Arquivo", header: "Arquivo" },
-    { field: "sharedWith", header: "Compartilhado com" },
-    { field: "sharedAt", header: "Data de envio" },
-    { field: "groups", header: "Grupos" },
-    { field: "Size", header: "Tamanho" },
-    { field: "Ações", header: "Ações" },
-  ];
-
-  const products = [
-    {
-      Arquivo: "File1.xlsx",
-      sharedWith: "Jaozin Jaozao",
-      sharedAt: "31/12/2012",
-      groups: "RH",
-      Size: "12mb",
-    },
-    {
-      Arquivo: "File1.xlsx",
-      sharedWith: "Jaozin Jaozao",
-      sharedAt: "31/12/2012",
-      groups: "RH",
-      Size: "12mb",
     },
   ];
 
@@ -90,19 +62,7 @@ const DashboardPage = () => {
             </h3>
             {/* TODO: Change the DataTable to make it so that each column is a <Column/>, this will make better customization possible (like clicking in a file to open its page) */}
             {/* TODO: ADD TITLE ON HOVER TO THE COLUMNS */}
-            <DataTable
-              value={products}
-              tableStyle={{
-                minWidth: "50dvw",
-                fontSize: "14px",
-                width: "min-content",
-                textWrap: "nowrap",
-              }}
-            >
-              {mockColumns.map((col) => (
-                <Column key="col.field" field={col.field} header={col.header} />
-              ))}
-            </DataTable>
+            Tabela legal aqui
           </div>
           {/* ↓ Seção 3: Todos os Arquivos ↓ */}
           <div className="flex flex-col"></div>
