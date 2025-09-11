@@ -1,7 +1,7 @@
 import LoginInput from "../components/common/loginInput";
 import BaseButton from "../components/common/baseButton";
 import { LayoutGrid } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const LoginPage = () => {
   const navigate = useNavigate();

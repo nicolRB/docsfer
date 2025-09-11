@@ -1,7 +1,7 @@
 import { CloudUpload, Bell } from "lucide-react";
 import usePageName from "../hooks/usePageName";
 import { Tooltip } from "primereact/tooltip";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const PageHeader = () => {
   const pageName: string = usePageName();

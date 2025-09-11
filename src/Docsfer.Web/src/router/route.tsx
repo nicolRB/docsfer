@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router";
 import Login from "../pages/LoginPage";
 import Dashboard from "../pages/DashboardPage";
 import RootLayout from "../layout/rootLayout";

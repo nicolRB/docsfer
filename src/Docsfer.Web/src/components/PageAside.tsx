@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { House, ChevronsRight, Users, Folders } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 
 const PageAside = () => {
   const [isExpanded, setIsExpanded] = useState(false);
