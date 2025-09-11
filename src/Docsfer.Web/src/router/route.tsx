@@ -4,8 +4,9 @@ import Login from "../pages/LoginPage";
 import Dashboard from "../pages/DashboardPage";
 import RootLayout from "../layout/rootLayout";
 
+import RouteError from "../components/base/RouteError";
+
 import Loader from "../components/base/loader";
-import { NavLink } from "react-router-dom";
 
 const Groups = React.lazy(() => import("../pages/GroupPage"));
 const Files = React.lazy(() => import("../pages/Arquivos/AllfilesPage"));
@@ -21,23 +22,6 @@ export async function filesLoader() {
 
   const files = [{ id: "file1", name: "filename.docx" }];
   return { Files: files };
-}
-
-function RouteError() {
-  return (
-    <div className="p-6">
-      <h2 className="text-lg font-semibold text-red-500">Algo deu errado</h2>
-      <p>
-        Tente novamente ou{" "}
-        <NavLink
-          to={"/dashboard"}
-          className="text-zinc-200 underline hover:text-zinc-400"
-        >
-          volte ao inicio.
-        </NavLink>
-      </p>
-    </div>
-  );
 }
 
 export const router = createBrowserRouter([

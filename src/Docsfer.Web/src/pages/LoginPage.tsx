@@ -2,47 +2,12 @@ import LoginInput from "../components/common/loginInput";
 import BaseButton from "../components/common/baseButton";
 import { LayoutGrid } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { Toast } from "primereact/toast";
-import { useRef, useState } from "react";
-import { Avatar } from "primereact/avatar";
 
 const LoginPage = () => {
-  const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
-  const toast = useRef(null);
-
-  const clear = () => {
-    toast.current.clear();
-    setVisible(false);
-  };
-
-  const confirm = () => {
-    if (!visible) {
-      setVisible(true);
-      toast.current.clear();
-      toast.current.show({
-        severity: "info",
-        summary: "info message",
-        content: (props) => (
-          <div className="text-sm">
-            <div>
-              <Avatar image="/images/alou.png" shape="circle" />
-              <span className="text-900">Teste</span>
-            </div>
-            <div>{props.message.summary}</div>
-          </div>
-        ),
-      });
-    }
-  };
 
   const handleLogin = () => {
-    toast.current.show({
-      severity: "info",
-      summary: "info",
-      detail: "Message content idk",
-    });
-    // navigate("/dashboard");
+    navigate("/dashboard");
   };
 
   return (
@@ -52,7 +17,7 @@ const LoginPage = () => {
         <div className="relative w-full h-full z-2">
           <img
             src="/main_icon.svg"
-            alt="image"
+            alt="logo"
             className="absolute left-14 top-48"
           />
         </div>
@@ -95,8 +60,7 @@ const LoginPage = () => {
                   placeholder="Sua senha"
                   type="Password"
                 />
-                <Toast ref={toast} onRemove={clear} position="bottom-center" />
-                <BaseButton variant="border" onClick={confirm}>
+                <BaseButton variant="border" onClick={handleLogin}>
                   Entrar com email
                 </BaseButton>
               </div>

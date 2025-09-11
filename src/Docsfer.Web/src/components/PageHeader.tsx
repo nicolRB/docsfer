@@ -1,14 +1,14 @@
 import { CloudUpload, Bell } from "lucide-react";
 import usePageName from "../hooks/usePageName";
 import { Tooltip } from "primereact/tooltip";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const PageHeader = () => {
   const pageName: string = usePageName();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const navImport = () => {
-    // navigate("/");
+  const goToNewFile = () => {
+    navigate("/newFile");
   };
 
   return (
@@ -18,7 +18,13 @@ const PageHeader = () => {
         <div className="inline-flex justify-center items-center">
           {/* logo */}
           <div className="flex justify-center items-center w-7 h-7">
-            <img src="/images/alou.png" alt="logo" />
+            <picture>
+              <source media="(min-width:650px)" srcSet="/images/alout.png" />
+              <img
+                src="https://imgs.search.brave.com/0Ep1l2eG7ZhkoVryj81G9tp7hlLeNkUgG8Wf8H9vJpw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly8xMDAw/bG9nb3MubmV0L3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIzLzAx/L01pY3Jvc29mdC1B/enVyZS1sb2dvLTUw/MHgyODEucG5n"
+                alt="logo"
+              />
+            </picture>
           </div>
           {/* separator */}
           <div className="inline-flex text-lg justify-center items-center size-8 text-gray-500 dark:text-zinc-700 [&_svg]:h-4">
@@ -45,9 +51,9 @@ const PageHeader = () => {
               className="header-button__style group"
             >
               <div className="[&_svg]:h-5 [&_svg]:w-5">
-                <NavLink to={"/newFile"}>
-                  <CloudUpload onClick={navImport} />
-                </NavLink>
+                <button onClick={goToNewFile} className="flex items-center">
+                  <CloudUpload />
+                </button>
               </div>
             </button>
 
