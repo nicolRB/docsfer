@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { House, ChevronsRight, Users, Folders } from "lucide-react";
 import { NavLink } from "react-router";
+import clsx from "clsx";
 
 const PageAside = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -47,20 +48,23 @@ const PageAside = () => {
                   to={to}
                   end={!!exact}
                   className={({ isActive }) =>
-                    `flex items-center w-full py-3 px-3.5 gap-3 font-gabarito rounded-lg dark:hover:bg-zinc-800 dark:text-zinc-200 ${
-                      isActive
-                        ? "dark:bg-zinc-800 dark:text-zinc-200"
-                        : "dark:text-zinc-500"
-                    }`
+                    clsx(
+                      "flex items-center w-full py-3 px-3.5 gap-3 font-gabarito rounded-lg dark:hover:bg-zinc-800 dark:text-zinc-200 ",
+                      {
+                        "dark:bg-zinc-800 dark:text-zinc-200": isActive,
+                      }
+                    )
                   }
                 >
                   <Icon className="size-5 flex-shrink-0 " />
                   <span
-                    className={`${
-                      isExpanded || isPinned
-                        ? "opacity-100 visible"
-                        : "opacity-0 invisible p-0 m-0"
-                    } transition-all duration-300 whitespace-nowrap`}
+                    className={clsx(
+                      "opacity-0 invisible p-0 m-0 transition-all duration-300 whitespace-nowrap",
+                      {
+                        isExpanded: "opacity-100 visible",
+                        isPinned: "opacity-100 visible",
+                      }
+                    )}
                   >
                     {label}
                   </span>
