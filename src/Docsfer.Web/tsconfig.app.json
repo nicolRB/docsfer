@@ -24,8 +24,17 @@
     "noUncheckedSideEffectImports": true,
 
     /* Docsfer */
+    "baseUrl": ".",
     "paths": {
-      "*": ["*"]
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@layout/*": ["src/layout/*"],
+      "@router/*": ["src/router/*"],
+      "@styles/*": ["src/styles/*"],
+      "@lib/*": ["src/lib/*"],
+      "@types/*": ["src/types/*"]
     }
   },
   "include": ["src"]

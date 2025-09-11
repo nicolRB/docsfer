@@ -1,4 +1,4 @@
-import { FileTemplate } from "../../components/base/Arquivos/FileTemplate";
+import { FileTemplate } from "@components/base/Arquivos/FileTemplate";
 
 const AllfilesPage = () => {
   const products = [

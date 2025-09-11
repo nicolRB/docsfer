@@ -1,5 +1,5 @@
 import { Folder, Ellipsis } from "lucide-react";
-import { useFileColor } from "../../../hooks/useFileColor";
+import { useFileColor } from "@hooks/useFileColor";
 
 interface FileDetailProps {
   fileName: string;

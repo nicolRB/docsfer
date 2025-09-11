@@ -1,5 +1,5 @@
 import { FileText, Share2, Download, Upload, Trash2 } from "lucide-react";
-import { useFileColor } from "../../../hooks/useFileColor";
+import { useFileColor } from "@hooks/useFileColor";
 
 interface CardInfoProps {
   username: string;
