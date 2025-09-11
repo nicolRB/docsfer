@@ -60,13 +60,13 @@ const formatDate = (dateString: string): string => {
   }
 };
 
-const CardTemplate: React.FC<CardInfos> = ({
+const CardTemplate = ({
   username,
   date,
   action,
   item,
   receiver,
-}) => {
+}: CardInfos) => {
   const initials = getUserInitials(username);
   const actionIcon = getActionIcon(action);
   const formattedDate = formatDate(date);

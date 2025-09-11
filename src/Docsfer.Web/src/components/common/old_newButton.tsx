@@ -1,5 +1,3 @@
-import React from "react";
-
 const newButton = () => {
   return (
     <div className="h-1/3 w-full flex justify-center items-center bg-btn-200 ">

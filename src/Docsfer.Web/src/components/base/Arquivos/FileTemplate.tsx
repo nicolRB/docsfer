@@ -1,4 +1,3 @@
-import React from "react";
 import { Folder, Ellipsis } from "lucide-react";
 import { useFileColor } from "../../../hooks/useFileColor";
 
@@ -6,19 +5,19 @@ interface FileDetails {
   fileName: string;
   fileDate: string;
   fileSize: string;
-  fileMajorVersion?: Int16Array;
-  fileMinorVersion?: Int16Array;
+  fileMajorVersion?: number;
+  fileMinorVersion?: number;
   sharedBy: string;
 }
 
-const FileTemplate: React.FC<FileDetails> = ({
+const FileTemplate = ({
   fileName,
   fileDate,
   fileSize,
   fileMajorVersion = 1,
   fileMinorVersion = 0,
   sharedBy,
-}) => {
+}: FileDetails) => {
   const fileColor = useFileColor(fileName);
 
   function formatDate(dateStr: string) {

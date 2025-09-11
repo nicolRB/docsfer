@@ -18,7 +18,7 @@ type BaseButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   className?: string;
 };
 
-const BaseButton: React.FC<BaseButtonProps> = ({
+const BaseButton = ({
   type = "button",
   children,
   variant = "full",
@@ -27,7 +27,7 @@ const BaseButton: React.FC<BaseButtonProps> = ({
   iconPosition = "left",
   className = "",
   ...rest // extra props like onClick, disabled
-}) => {
+}: BaseButtonProps) => {
   const variantClasses = VARIANTS[variant] ?? VARIANTS.full;
 
   const renderIcon = () => {
