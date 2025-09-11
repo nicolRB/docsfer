@@ -1,6 +1,7 @@
 import { CloudUpload, Bell } from "lucide-react";
 import usePageName from "../hooks/usePageName";
 import { useNavigate } from "react-router";
+import * as Tooltip from "@radix-ui/react-tooltip";
 
 export const PageHeader = () => {
   const pageName: string = usePageName();
@@ -41,6 +42,22 @@ export const PageHeader = () => {
               className="header-button__style group"
             >
               <div className="[&_svg]:h-5 [&_svg]:w-5">
+                {/* <Tooltip.Provider>
+                  <Tooltip.Root>
+                    <Tooltip.Trigger asChild>
+                      <button className="IconButton">Hover me</button>
+                    </Tooltip.Trigger>
+                    <Tooltip.Portal>
+                      <Tooltip.Content
+                        className="TooltipContent"
+                        sideOffset={5}
+                      >
+                        This is a tooltip!
+                        <Tooltip.Arrow className="TooltipArrow" />
+                      </Tooltip.Content>
+                    </Tooltip.Portal>
+                  </Tooltip.Root>
+                </Tooltip.Provider> */}
                 <button onClick={goToNewFile} className="flex items-center">
                   <CloudUpload />
                 </button>

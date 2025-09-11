@@ -25,6 +25,8 @@ export const PageAside = () => {
     }
   };
 
+  const isOpen = isExpanded || isPinned;
+
   const togglePin = () => {
     setIsPinned(!isPinned);
     setIsExpanded(!isExpanded);
@@ -35,7 +37,7 @@ export const PageAside = () => {
   // TODO: IMPLEMENT LIGHT MODE FOR THE LOVE OF GOD
   return (
     <div className="fixed flex h-[calc(100dvh-48px)] z-50 bg-zinc-200 dark:bg-zinc-900">
-      <div
+      <aside
         className={`transition-all duration-200 ease-in-out ${sidebarWidth} flex flex-col relative  border-r border-zinc-700`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -59,10 +61,10 @@ export const PageAside = () => {
                   <Icon className="size-5 flex-shrink-0 " />
                   <span
                     className={clsx(
-                      "opacity-0 invisible p-0 m-0 transition-all duration-300 whitespace-nowrap",
+                      "p-0 m-0 transition-all duration-300 whitespace-nowrap",
                       {
-                        isExpanded: "opacity-100 visible",
-                        isPinned: "opacity-100 visible",
+                        "opacity-100 visible": isOpen,
+                        "opacity-0 invisible": !isOpen,
                       }
                     )}
                   >
@@ -75,16 +77,16 @@ export const PageAside = () => {
         </nav>
         <div className="flex items-center justify-center w-16 h-12 dark:text-zinc-400">
           {/* TODO: IMPLEMENT A WAY TO TOGGLE IF HOVER CHANGES THE WIDTH OR NOT WITH A TOOLTIP MENU */}
-          <div
-            className={`p-3 dark:hover:bg-zinc-800 rounded-lg mb-4 ${
-              isPinned ? "dark:text-zinc-200 dark:bg-zinc-800" : ""
-            }`}
+          <button
+            className={clsx("p-3 dark:hover:bg-zinc-800 rounded-lg mb-4", {
+              "dark:text-zinc-200 dark:bg-zinc-800": isPinned,
+            })}
             onClick={togglePin}
           >
             <ChevronsRight />
-          </div>
+          </button>
         </div>
-      </div>
+      </aside>
     </div>
   );
 };
