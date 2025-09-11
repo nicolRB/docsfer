@@ -1,7 +1,6 @@
-import React from "react";
 import PageHeader from "../components/PageHeader";
 import PageAside from "../components/PageAside";
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router";
 
 const rootLayout = () => {
   return (
