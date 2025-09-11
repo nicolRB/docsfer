@@ -1,7 +1,7 @@
 import { Folder, Ellipsis } from "lucide-react";
 import { useFileColor } from "../../../hooks/useFileColor";
 
-interface FileDetails {
+interface FileDetailProps {
   fileName: string;
   fileDate: string;
   fileSize: string;
@@ -17,7 +17,7 @@ const FileTemplate = ({
   fileMajorVersion = 1,
   fileMinorVersion = 0,
   sharedBy,
-}: FileDetails) => {
+}: FileDetailProps) => {
   const fileColor = useFileColor(fileName);
 
   function formatDate(dateStr: string) {
