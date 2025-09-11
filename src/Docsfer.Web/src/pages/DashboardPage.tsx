@@ -1,4 +1,4 @@
-import CardTemplate from "../components/base/dashboard/CardTemplate";
+import { CardTemplate } from "../components/base/dashboard/CardTemplate";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 
@@ -75,7 +75,11 @@ const DashboardPage = () => {
               {/* Card */}
               {/* TODO: CRIAR UM COMPONENT PRA ISSO */}
               {cardMock.map((activity, index) => (
-                <CardTemplate key={index} {...activity} />
+                <CardTemplate
+                  key={index}
+                  {...activity}
+                  receiver={activity.receiver ?? ""}
+                />
               ))}
             </div>
           </div>

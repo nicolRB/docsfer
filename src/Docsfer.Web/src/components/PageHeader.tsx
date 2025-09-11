@@ -3,7 +3,7 @@ import usePageName from "../hooks/usePageName";
 import { Tooltip } from "primereact/tooltip";
 import { useNavigate } from "react-router";
 
-const PageHeader = () => {
+export const PageHeader = () => {
   const pageName: string = usePageName();
   const navigate = useNavigate();
 
@@ -84,5 +84,3 @@ const PageHeader = () => {
     </header>
   );
 };
-
-export default PageHeader;

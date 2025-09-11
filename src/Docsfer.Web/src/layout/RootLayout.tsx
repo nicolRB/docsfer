@@ -1,8 +1,8 @@
-import PageHeader from "../components/PageHeader";
-import PageAside from "../components/PageAside";
+import { PageHeader } from "../components/PageHeader";
+import { PageAside } from "../components/PageAside";
 import { Outlet } from "react-router";
 
-const rootLayout = () => {
+export const RootLayout = () => {
   return (
     <div className="min-h-dvh w-dvw bg-zinc-100 dark:bg-zinc-900 overflow-hidden scrollbar-thin scrollbar-track-zinc-900">
       <PageHeader />
@@ -13,5 +13,3 @@ const rootLayout = () => {
     </div>
   );
 };
-
-export default rootLayout;

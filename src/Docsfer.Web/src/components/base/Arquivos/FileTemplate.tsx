@@ -10,7 +10,7 @@ interface FileDetailProps {
   sharedBy: string;
 }
 
-const FileTemplate = ({
+export const FileTemplate = ({
   fileName,
   fileDate,
   fileSize,
@@ -74,5 +74,3 @@ const FileTemplate = ({
     </div>
   );
 };
-
-export default FileTemplate;

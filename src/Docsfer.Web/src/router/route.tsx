@@ -2,11 +2,11 @@ import React from "react";
 import { createBrowserRouter } from "react-router";
 import Login from "../pages/LoginPage";
 import Dashboard from "../pages/DashboardPage";
-import RootLayout from "../layout/rootLayout";
+import { RootLayout } from "../layout/RootLayout";
 
-import RouteError from "../components/base/RouteError";
+import { RouteError } from "../components/base/RouteError";
 
-import Loader from "../components/base/loader";
+import { Loader } from "../components/base/Loader";
 
 const Groups = React.lazy(() => import("../pages/GroupPage"));
 const Files = React.lazy(() => import("../pages/Arquivos/AllfilesPage"));

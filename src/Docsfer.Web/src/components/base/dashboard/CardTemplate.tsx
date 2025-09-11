@@ -1,4 +1,3 @@
-import React from "react";
 import { FileText, Share2, Download, Upload, Trash2 } from "lucide-react";
 import { useFileColor } from "../../../hooks/useFileColor";
 
@@ -7,7 +6,7 @@ interface CardInfoProps {
   date: string;
   action: string;
   item: string;
-  receiver: string;
+  receiver?: string;
 }
 
 const getUserInitials = (username: string): string => {
@@ -56,7 +55,7 @@ const formatDate = (dateString: string): string => {
   }
 };
 
-const CardTemplate = ({
+export const CardTemplate = ({
   username,
   date,
   action,
@@ -108,5 +107,3 @@ const CardTemplate = ({
     </div>
   );
 };
-
-export default CardTemplate;

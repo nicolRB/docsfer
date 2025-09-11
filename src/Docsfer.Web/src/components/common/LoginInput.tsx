@@ -4,7 +4,11 @@ interface LoginInputProps {
   type: string;
 }
 
-const loginInput = ({ labelText, placeholder, type }: LoginInputProps) => {
+export const LoginInput = ({
+  labelText,
+  placeholder,
+  type,
+}: LoginInputProps) => {
   return (
     <>
       <fieldset className="flex flex-col-reverse gap-2 items-start justify-start group">
@@ -24,5 +28,3 @@ const loginInput = ({ labelText, placeholder, type }: LoginInputProps) => {
     </>
   );
 };
-
-export default loginInput;

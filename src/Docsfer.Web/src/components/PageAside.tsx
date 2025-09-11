@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { House, ChevronsRight, Users, Folders } from "lucide-react";
 import { NavLink } from "react-router";
 import clsx from "clsx";
 
-const PageAside = () => {
+export const PageAside = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
 
@@ -88,5 +88,3 @@ const PageAside = () => {
     </div>
   );
 };
-
-export default React.memo(PageAside);

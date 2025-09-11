@@ -18,7 +18,7 @@ type BaseButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   className?: string;
 };
 
-const BaseButton = ({
+export const BaseButton = ({
   type = "button",
   children,
   variant = "full",
@@ -52,5 +52,3 @@ const BaseButton = ({
     </button>
   );
 };
-
-export default BaseButton;

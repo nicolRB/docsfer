@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
 
-const RouteError = () => {
+export const RouteError = () => {
   return (
     <div className="p-6">
       <h2 className="text-lg font-semibold text-red-500">Algo deu errado</h2>
@@ -16,4 +16,3 @@ const RouteError = () => {
     </div>
   );
 };
-export default RouteError;
