@@ -23,16 +23,12 @@ const getActionIcon = (action: string) => {
   const iconProps = { size: 16, className: "text-sky-500" };
 
   switch (action.toLowerCase()) {
-    case "compartilhou":
     case "shared":
       return <Share2 {...iconProps} />;
-    case "baixou":
     case "downloaded":
       return <Download {...iconProps} />;
-    case "enviou":
     case "uploaded":
       return <Upload {...iconProps} />;
-    case "excluiu":
     case "deleted":
       return <Trash2 {...iconProps} />;
     default:
