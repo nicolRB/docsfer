@@ -1,28 +1,20 @@
-import React from "react";
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router";
+
 import Login from "../pages/LoginPage";
 import Dashboard from "../pages/DashboardPage";
 import { RootLayout } from "../layout/RootLayout";
+import { filesLoader } from "../hooks/useFileLoader";
+import { requireAuth } from "../hooks/useRequireAuth";
 
 import { RouteError } from "../components/base/RouteError";
 
 import { Loader } from "../components/base/Loader";
 
-const Groups = React.lazy(() => import("../pages/GroupPage"));
-const Files = React.lazy(() => import("../pages/Arquivos/AllfilesPage"));
-const Details = React.lazy(() => import("../pages/Arquivos/FileDetailsPage"));
-const Sharing = React.lazy(() => import("../pages/SharingPage"));
-
-async function requireAuth() {
-  console.log("implement later");
-}
-
-export async function filesLoader() {
-  await requireAuth();
-
-  const files = [{ id: "file1", name: "filename.docx" }];
-  return { Files: files };
-}
+const Groups = lazy(() => import("../pages/GroupPage"));
+const Files = lazy(() => import("../pages/Arquivos/AllfilesPage"));
+const Details = lazy(() => import("../pages/Arquivos/FileDetailsPage"));
+const Sharing = lazy(() => import("../pages/SharingPage"));
 
 export const router = createBrowserRouter([
   {
@@ -46,18 +38,18 @@ export const router = createBrowserRouter([
         path: "Files",
         loader: filesLoader,
         element: (
-          <React.Suspense fallback={<Loader />}>
+          <Suspense fallback={<Loader />}>
             <Files />
-          </React.Suspense>
+          </Suspense>
         ),
       },
       {
         path: "Details",
         loader: filesLoader,
         element: (
-          <React.Suspense fallback={<Loader />}>
+          <Suspense fallback={<Loader />}>
             <Details />
-          </React.Suspense>
+          </Suspense>
         ),
       },
       {
