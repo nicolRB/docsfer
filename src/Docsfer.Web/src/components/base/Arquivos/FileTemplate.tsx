@@ -1,5 +1,6 @@
 import { Folder, Ellipsis } from "lucide-react";
 import { useFileColor } from "@hooks/useFileColor";
+import clsx from "clsx";
 
 interface FileDetailProps {
   fileName: string;
@@ -40,7 +41,7 @@ export const FileTemplate = ({
         {/* icon + more (ellipsis) */}
         <div className="flex justify-between p-3">
           <Folder
-            className={`${fileColor} stroke-current fill-current size-8`}
+            className={clsx("stroke-current fill-current size-8", fileColor)}
           />
           <Ellipsis className="text-zinc-200 hover:cursor-pointer" />
         </div>

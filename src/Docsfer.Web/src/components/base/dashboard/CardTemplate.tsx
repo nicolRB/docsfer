@@ -1,4 +1,5 @@
 import { useFileColor } from "@hooks/useFileColor";
+import clsx from "clsx";
 
 interface CardInfoProps {
   username: string;
@@ -48,13 +49,13 @@ export const CardTemplate = ({
   const fileColor = useFileColor(item);
 
   return (
-    <div className="inline-flex flex-col w-fit justify-between gap-3 p-3 rounded-lg border-2 border-dashed dark:border-sky-800 dark:bg-zinc-800">
-      <div className="flex flex-col">
-        <div className="flex justify-between font-quicksand">
-          <span className="text-zinc-200 text-lg font-semibold">
+    <div className="flex flex-col w-fit justify-between gap-3 p-3 rounded-lg border-2 border-dashed dark:border-sky-800 dark:bg-zinc-800">
+      <div className="flex flex-col w-full">
+        <div className="flex justify-between font-quicksand gap-3">
+          <span className="text-zinc-200 text-lg font-semibold text-nowrap truncate">
             {username}
           </span>
-          <span className="inline-flex justify-center items-center size-8 rounded-full uppercase font-semibold bg-sky-500 text-zinc-900">
+          <span className="inline-flex justify-center items-center size-8! rounded-full uppercase font-semibold bg-sky-500 text-zinc-900">
             {initials}
           </span>
         </div>
@@ -68,7 +69,10 @@ export const CardTemplate = ({
         <span className="inline-flex gap-1">
           {action.toLowerCase()}
           <span
-            className={`cursor-pointer underline truncate max-w-52 ${fileColor}`}
+            className={clsx(
+              "cursor-pointer underline truncate max-w-52",
+              fileColor
+            )}
             title={item}
           >
             {item}
@@ -77,7 +81,7 @@ export const CardTemplate = ({
         {/* Alvo */}
         {receiver && (
           <span className="inline-flex gap-1">
-            com
+            com{" "}
             <span className="dark:text-zinc-200 underline cursor-pointer">
               {receiver}
             </span>

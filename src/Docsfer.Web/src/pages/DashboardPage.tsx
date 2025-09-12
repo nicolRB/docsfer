@@ -18,8 +18,6 @@ const DashboardPage = () => {
               Atividade Recente
             </h3>
             <div className="flex gap-4 overflow-x-scroll py-4 snap-always snap-mandatory">
-              {/* Card */}
-              {/* TODO: CRIAR UM COMPONENT PRA ISSO */}
               {recentActivities.map((activity, index) => (
                 <CardTemplate
                   key={index}
@@ -34,7 +32,7 @@ const DashboardPage = () => {
             <h3 className="inline-flex w-fit font-gabarito dark:text-sky-500 tracking-wider px-3 py-2 rounded-sm dark:bg-sky-500/20">
               Meus Arquivos
             </h3>
-            {/* TODO: Change the DataTable to make it so that each column is a <Column/>, this will make better customization possible (like clicking in a file to open its page) */}
+            {/* TODO: CREATE A TABLE*/}
             {/* TODO: ADD TITLE ON HOVER TO THE COLUMNS */}
             Tabela legal aqui
           </div>
