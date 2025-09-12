@@ -1,4 +1,3 @@
-import { FileText, Share2, Download, Upload, Trash2 } from "lucide-react";
 import { useFileColor } from "@hooks/useFileColor";
 
 interface CardInfoProps {
@@ -16,23 +15,6 @@ const getUserInitials = (username: string): string => {
     .join("")
     .toUpperCase()
     .slice(0, 1);
-};
-
-const getActionIcon = (action: string) => {
-  const iconProps = { size: 16, className: "text-sky-500" };
-
-  switch (action.toLowerCase()) {
-    case "shared":
-      return <Share2 {...iconProps} />;
-    case "downloaded":
-      return <Download {...iconProps} />;
-    case "uploaded":
-      return <Upload {...iconProps} />;
-    case "deleted":
-      return <Trash2 {...iconProps} />;
-    default:
-      return <FileText {...iconProps} />;
-  }
 };
 
 const formatDate = (dateString: string): string => {
@@ -62,12 +44,11 @@ export const CardTemplate = ({
   receiver,
 }: CardInfoProps) => {
   const initials = getUserInitials(username);
-  const actionIcon = getActionIcon(action);
   const formattedDate = formatDate(date);
   const fileColor = useFileColor(item);
 
   return (
-    <div className="inline-flex flex-col min-w-64 justify-between gap-3 p-3 rounded-lg border-2 border-dashed dark:border-sky-800 dark:bg-zinc-800">
+    <div className="inline-flex flex-col w-fit justify-between gap-3 p-3 rounded-lg border-2 border-dashed dark:border-sky-800 dark:bg-zinc-800">
       <div className="flex flex-col">
         <div className="flex justify-between font-quicksand">
           <span className="text-zinc-200 text-lg font-semibold">
@@ -82,25 +63,25 @@ export const CardTemplate = ({
           {formattedDate}
         </span>
       </div>
-      <div className="inline-flex flex-wrap max-w-72 gap-1 font-gabarito dark:text-zinc-400">
+      <div className="inline-flex flex-wrap gap-1 font-gabarito dark:text-zinc-400">
         {/* Ação */}
-        <div className="flex-shrink-0 mt-0.5">{actionIcon}</div>
         <span className="inline-flex gap-1">
           {action.toLowerCase()}
-          <span className={`cursor-pointer underline ${fileColor}`}>
+          <span
+            className={`cursor-pointer underline truncate max-w-52 ${fileColor}`}
+            title={item}
+          >
             {item}
           </span>
         </span>
         {/* Alvo */}
         {receiver && (
-          <>
-            <span className="inline-flex gap-1">
-              com
-              <span className="dark:text-zinc-200 underline cursor-pointer">
-                {receiver}
-              </span>
+          <span className="inline-flex gap-1">
+            com
+            <span className="dark:text-zinc-200 underline cursor-pointer">
+              {receiver}
             </span>
-          </>
+          </span>
         )}
       </div>
     </div>

@@ -18,7 +18,7 @@ export const PageHeader = () => {
         <nav className="flex w-full px-4 justify-between items-center">
           <div className="inline-flex justify-center items-center">
             {/* logo */}
-            <div className="flex justify-center items-center w-7 h-7">
+            <div className="flex justify-center items-center size-7">
               <picture>
                 <source media="(min-width:650px)" srcSet="/images/alout.png" />
                 <img

@@ -1,38 +1,12 @@
 import { CardTemplate } from "../components/base/dashboard/CardTemplate";
+import { generateActivities } from "@/hooks/useMockData";
+import { useMemo } from "react";
 
 const DashboardPage = () => {
-  const cardMock = [
-    {
-      username: "Jaozin Jaozao",
-      date: "05/09/2025 20:00:01",
-      action: "Shared",
-      item: "Exemplo.pdf",
-      receiver: "RH",
-    },
-    {
-      username: "Carlos Santos",
-      date: "05/09/2025 18:30:15",
-      action: "uploaded",
-      item: "Apresentacao_vendas.pptx",
-      receiver: "Comercial",
-    },
-    {
-      username: "Carlos Santos",
-      date: "05/09/2025 18:30:15",
-      action: "uploaded",
-      item: "Planilha.xlsx",
-      receiver: "Comercial",
-    },
-    {
-      username: "Jaozin Jaozao",
-      date: "05/09/2025 20:00:01",
-      action: "downloaded",
-      item: "SatoruGojo.gif",
-    },
-  ];
+  const recentActivities = useMemo(() => generateActivities(7), []);
 
   return (
-    <div className="relative z-10 ml-16 h-[400dvh]">
+    <div className="relative z-10 ml-16 ">
       <div className="flex flex-col gap-2 px-6 py-4">
         <h2 className="font-josefin text-xl dark:text-zinc-400">
           Bem-vindo de volta, Jaozin!
@@ -43,10 +17,10 @@ const DashboardPage = () => {
             <h3 className="inline-flex w-fit  font-gabarito dark:text-sky-500 tracking-wider px-3 py-2 rounded-sm dark:bg-sky-500/20">
               Atividade Recente
             </h3>
-            <div className="flex gap-4">
+            <div className="flex gap-4 overflow-x-scroll py-4 snap-always snap-mandatory">
               {/* Card */}
               {/* TODO: CRIAR UM COMPONENT PRA ISSO */}
-              {cardMock.map((activity, index) => (
+              {recentActivities.map((activity, index) => (
                 <CardTemplate
                   key={index}
                   {...activity}
