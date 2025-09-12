@@ -5,28 +5,28 @@ const DashboardPage = () => {
     {
       username: "Jaozin Jaozao",
       date: "05/09/2025 20:00:01",
-      action: "Compartilhou",
+      action: "Shared",
       item: "Exemplo.pdf",
       receiver: "RH",
     },
     {
       username: "Carlos Santos",
       date: "05/09/2025 18:30:15",
-      action: "Enviou",
+      action: "uploaded",
       item: "Apresentacao_vendas.pptx",
       receiver: "Comercial",
     },
     {
       username: "Carlos Santos",
       date: "05/09/2025 18:30:15",
-      action: "Enviou",
+      action: "uploaded",
       item: "Planilha.xlsx",
       receiver: "Comercial",
     },
     {
       username: "Jaozin Jaozao",
       date: "05/09/2025 20:00:01",
-      action: "Baixou",
+      action: "downloaded",
       item: "SatoruGojo.gif",
     },
   ];
