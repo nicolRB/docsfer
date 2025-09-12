@@ -54,9 +54,9 @@ export const PageAside = () => {
                   end={!!exact}
                   className={({ isActive }) =>
                     clsx(
-                      "flex items-center w-full py-3 px-3.5 gap-3 font-gabarito rounded-lg dark:hover:bg-zinc-800 dark:text-zinc-200 ",
+                      "flex items-center w-full py-3 px-3.5 gap-3 font-gabarito rounded-lg dark:hover:bg-zinc-800 dark:text-zinc-400 ",
                       {
-                        "dark:bg-zinc-800 dark:text-zinc-200": isActive,
+                        "dark:bg-zinc-800 dark:!text-zinc-200": isActive,
                       }
                     )
                   }
