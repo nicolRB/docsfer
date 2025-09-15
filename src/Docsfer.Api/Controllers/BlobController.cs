@@ -39,13 +39,36 @@ public class BlobController : ControllerBase
         _userManager = userManager;
     }
 
+    [HttpGet]
+    [Route("path")]
+    public async Task<IActionResult> Path(
+        [FromQuery] Guid relationshipId,
+        [FromQuery] string blobEntryFileName,
+        [FromQuery] int version)
+    {
+        var relationship = (await _relationshipRepository.FindByIdAsync(relationshipId)).EnsureExists();
+        var blobEntry = (await _blobEntryRepository.GetBlobByFileName(relationship, blobEntryFileName)).EnsureExists();
+
+        if (version < 1)
+        {
+            version = blobEntry.CurrentVersion;
+        }
+
+        var path = $"{relationship.Id}/{blobEntry.BlobName}.v{version}.file";
+
+        return Ok(new
+        {
+            path
+        });
+    }
+
     [HttpPost("upload")]
     public async Task<IActionResult> Upload(
         [FromForm] IFormFile file,
         [FromForm] Guid from,
         [FromForm] Guid to)
     {
-        if (file == null || file.Length == 0)
+        if (file is null || file.Length == 0)
         {
             throw new InvalidFileException();
         }
@@ -54,13 +77,24 @@ public class BlobController : ControllerBase
 
         var relationship = (await _relationshipRepository.FindAsync(from, to)).EnsureExists();
 
-        var blobEntry = new BlobEntry
-        {
-            FileName = file.FileName,
-            Relationship = relationship,
-        };
+        var blobEntry = await _blobEntryRepository.GetBlobByFileName(relationship, file.FileName);
 
-        await _blobEntryRepository.InsertAsync(blobEntry);
+        if (blobEntry is null)
+        {
+            blobEntry = new BlobEntry
+            {
+                FileName = file.FileName,
+                Relationship = relationship,
+                CurrentVersion = 1,
+            };
+
+            await _blobEntryRepository.InsertAsync(blobEntry);
+        }
+        else
+        {
+            blobEntry.CurrentVersion += 1;
+            await _blobEntryRepository.UpdateAsync(blobEntry);
+        }
 
         var path = $"{relationship.Id}/{blobEntry.BlobName}.v{blobEntry.CurrentVersion}.file";
         var blobClient = _blobContainerClient.GetBlobClient(path);

@@ -12,6 +12,6 @@ public class ChatMessage
     public long BlobEntryId { get; set; }
     public Guid UserId { get; set; }
     public string Content { get; set; } = string.Empty;
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
     public bool IsSystemMessage { get; set; } = false;
 }
