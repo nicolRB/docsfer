@@ -1,5 +1,6 @@
 ﻿using Docsfer.Api.Repositories;
 using Docsfer.Core.Chat;
+using Docsfer.Core.Extensions;
 using Docsfer.Core.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -31,11 +32,7 @@ public class ChatController : ControllerBase
     {
         var user = await _userManager.GetUserAsync(User);
 
-        var blob = await _blobEntryRepository.FindByIdAsync(blobId);
-        if (blob == null)
-        {
-            return NotFound("Arquivo não encontrado");
-        }
+        var blob = (await _blobEntryRepository.FindByIdAsync(blobId)).EnsureExists();
 
         var message = new ChatMessage
         {
@@ -50,10 +47,10 @@ public class ChatController : ControllerBase
         return Ok(message);
     }
 
-    [HttpGet("{blobId}/messages")]
+    [HttpGet("{blobId}/message")]
     public async Task<IActionResult> GetMessages(long blobId)
     {
-        var messages = await _chatRepository.GetByBlobAsync(blobId);
-        return Ok(messages);
+        var message = await _chatRepository.GetByBlobAsync(blobId);
+        return Ok(message);
     }
 }
