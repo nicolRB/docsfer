@@ -40,11 +40,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.ExpireTimeSpan = TimeSpan.FromDays(1);
         options.SlidingExpiration = true;
     });
-    // .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-    // {
-    //     options.Authority = jwtAuthority;
-    //     options.Audience = jwtAudience;
-    // });
+// .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+// {
+//     options.Authority = jwtAuthority;
+//     options.Audience = jwtAudience;
+// });
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
