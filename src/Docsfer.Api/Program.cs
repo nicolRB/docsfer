@@ -123,10 +123,10 @@ var app = builder.Build();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
-// if (app.Environment.IsDevelopment())
-// {
-app.MapOpenApi("/api/docs/{documentName}.json");
-// }
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi("/api/docs/{documentName}.json");
+}
 
 app.MapControllers();
 

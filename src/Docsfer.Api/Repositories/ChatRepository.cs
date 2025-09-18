@@ -4,24 +4,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Docsfer.Api.Repositories;
 
-public class ChatRepository : IChatRepository
+public class ChatRepository(DocsferDbContext context) : IChatRepository
 {
-    private readonly DocsferDbContext _context;
-
-    public ChatRepository(DocsferDbContext context)
-    {
-        _context = context;
-    }
-
     public async Task InsertAsync(ChatMessage message)
     {
-        await _context.ChatMessages.AddAsync(message);
-        await _context.SaveChangesAsync();
+        await context.ChatMessages.AddAsync(message);
+        await context.SaveChangesAsync();
     }
 
     public async Task<IEnumerable<ChatMessage>> GetByBlobAsync(long blobEntryId)
     {
-        return await _context.ChatMessages
+        return await context.ChatMessages
             .Where(m => m.BlobEntryId == blobEntryId)
             .OrderBy(m => m.CreatedAt)
             .ToListAsync();

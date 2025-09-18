@@ -39,7 +39,6 @@ public class ChatController : ControllerBase
             BlobEntryId = blob.Id.Value,
             UserId = user.Id,
             Content = input.Content,
-            CreatedAt = DateTime.UtcNow
         };
 
         await _chatRepository.InsertAsync(message);
