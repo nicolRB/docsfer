@@ -2,6 +2,7 @@
 using Docsfer.Core.Chat;
 using Docsfer.Core.Extensions;
 using Docsfer.Core.Identity;
+using Docsfer.Core.Shared.Chat;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -30,13 +31,18 @@ public class ChatController : ControllerBase
     [HttpPost("{blobId}/message")]
     public async Task<IActionResult> PostMessage(long blobId, PostMessageInput input)
     {
-        var user = await _userManager.GetUserAsync(User);
+        var user = (await _userManager.GetUserAsync(User)).EnsureExists();
 
         var blob = (await _blobEntryRepository.FindByIdAsync(blobId)).EnsureExists();
 
+        if (blob is { })
+        {
+            return BadRequest();
+        }
+
         var message = new ChatMessage
         {
-            BlobEntryId = blob.Id.Value,
+            BlobEntryId = blobId,
             UserId = user.Id,
             Content = input.Content,
         };

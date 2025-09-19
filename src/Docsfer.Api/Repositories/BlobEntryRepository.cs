@@ -27,10 +27,12 @@ public class BlobEntryRepository(DocsferDbContext context) : IBlobEntryRepositor
         await context.BlobEntries.AddAsync(blobEntry);
         await context.SaveChangesAsync();
     }
+
     public async Task<BlobEntry?> FindByIdAsync(long id)
     {
         return await context.BlobEntries.SingleOrDefaultAsync(b => b.Id == id);
     }
+
     public async Task UpdateAsync(BlobEntry blobEntry)
     {
         context.BlobEntries.Update(blobEntry);
