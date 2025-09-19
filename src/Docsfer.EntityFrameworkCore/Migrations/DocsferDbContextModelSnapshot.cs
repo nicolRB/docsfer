@@ -17,7 +17,7 @@ namespace Docsfer.EntityFrameworkCore.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.4")
+                .HasAnnotation("ProductVersion", "9.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -52,6 +52,33 @@ namespace Docsfer.EntityFrameworkCore.Migrations
                     b.HasIndex("RelationshipId");
 
                     b.ToTable("BlobEntry", (string)null);
+                });
+
+            modelBuilder.Entity("Docsfer.Core.Chat.ChatMessage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<long>("BlobEntryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsSystemMessage")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChatMessages");
                 });
 
             modelBuilder.Entity("Docsfer.Core.Groups.Group", b =>
