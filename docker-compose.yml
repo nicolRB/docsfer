@@ -57,6 +57,10 @@ services:
     restart: unless-stopped
     networks:
       - docsfer_network
+    ports:
+      - 5000:80
+      - 25:25
+      - 143:143
 
 
 
