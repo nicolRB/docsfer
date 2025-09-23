@@ -55,6 +55,10 @@ services:
     container_name: docsfer_smtpdev
     image: rnwood/smtp4dev:3.8.6
     restart: unless-stopped
+    ports:
+      - 5000:80
+      - 25:25
+      - 143:143
     networks:
       - docsfer_network
 
