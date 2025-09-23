@@ -90,7 +90,7 @@ services:
       - ConnectionStrings__Default=Host=postgres; Database=docsfer; Username=postgres; Password=postgres;
       - Smtp__Enabled=true
       - Smtp__Hostname=smtp
-      - Smtp__Post=25
+      - Smtp__Port=25
     env_file:
       - .env
     networks:
