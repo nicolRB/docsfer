@@ -40,6 +40,33 @@ public class BlobController : ControllerBase
     }
 
     [HttpGet]
+    public async Task<IActionResult> GetAll([FromQuery] Guid relationshipId)
+    {
+        var relationship = (await _relationshipRepository.FindByIdAsync(relationshipId)).EnsureExists();
+
+        var blobs = await _blobEntryRepository.GetAllInRelationAsync(relationship);
+
+        return Ok(blobs);
+    }
+
+    [HttpGet("one")]
+    public async Task<IActionResult> GetOne(
+    [FromQuery] Guid relationshipId,
+    [FromQuery] long blobEntryId)
+    {
+        var relationship = (await _relationshipRepository.FindByIdAsync(relationshipId)).EnsureExists();
+
+        var blob = await _blobEntryRepository.FindByIdAsync(blobEntryId);
+
+        if (blob == null || blob.RelationshipId != relationship.Id)
+        {
+            return NotFound("Blob entry not found for this relationship.");
+        }
+
+        return Ok(blob);
+    }
+
+    [HttpGet]
     [Route("path")]
     public async Task<IActionResult> Path(
         [FromQuery] Guid relationshipId,
