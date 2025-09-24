@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Docsfer.Core.Consts;
 
-namespace Docsfer.Core.Consts
+public class DocsferConsts
 {
-    internal class DocsferConsts
-    {
-    }
+    public const string MensagemEmailNovoArquivo = "<p>Um novo arquivo foi criado</p>";
 }
