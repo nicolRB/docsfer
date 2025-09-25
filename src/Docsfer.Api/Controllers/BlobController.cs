@@ -1,6 +1,7 @@
 using Ardalis.GuardClauses;
 using Azure.Storage.Blobs;
 using Docsfer.Api.Repositories;
+using Docsfer.Api.Extensions;
 using Docsfer.Core.Blobs;
 using Docsfer.Core.Exceptions.Blobs;
 using Docsfer.Core.Extensions;
